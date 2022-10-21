@@ -7,14 +7,15 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 public class Main extends JFrame {
+//frames
     JFrame main;
     JFrame Search;
     JFrame viewRegister;
-    JFrame register;
+    JFrame CancelRoom;
     JFrame ChangeRoom;
     JFrame RateRoom;
     JFrame hotelLogin;
-
+//buttons
     JButton Make;
     JButton View;
     JButton Cancel;
@@ -32,7 +33,7 @@ public class Main extends JFrame {
          main = new JFrame("Hotel AOJJ");
          Search = new JFrame("search");
         // viewRegister = new JFrame("view register");
-         register = new JFrame("cancel");
+         CancelRoom = new JFrame("cancel");
          ChangeRoom = new JFrame("change room");
          hotelLogin = new JFrame("Login");
          RateRoom = new JFrame("Rate");
@@ -40,9 +41,10 @@ public class Main extends JFrame {
         main.setSize(700,500);
         Search.setSize(700,500);
         //viewRegister.setSize(700,500);
-        register.setSize(700,500);
+        CancelRoom.setSize(700,500);
         ChangeRoom.setSize(700,500);
-        hotelLogin.setSize(700,500);
+        hotelLogin.setSize(500,500);
+        RateRoom.setSize(700,500);
 
         //main window
         Make = new JButton("Search Reservation");
@@ -59,26 +61,25 @@ public class Main extends JFrame {
         Rate.setBounds(400,25,150, 40);
         Change.setBounds(500,25,150, 40);
         Login.setBounds(500,100,150, 40);
-        ReturnMenu.setBounds(10,50,150,40);
+        ReturnMenu.setBounds(200,50,150,40);
 
         main.add(Make);
         //main.add(View);
         main.add(Cancel);
         main.add(Rate);
         main.add(Change);
-        main.add(ReturnMenu);
 
         main.setLayout(new FlowLayout());
         Search.setLayout(new FlowLayout());
         //viewRegister.setLayout(new FlowLayout());
-        register.setLayout(new FlowLayout());
+        CancelRoom.setLayout(new FlowLayout());
         ChangeRoom.setLayout(new FlowLayout());
         hotelLogin.setLayout(new FlowLayout());
 
         main.setVisible(true);
         Search.setVisible(false);
        // viewRegister.setVisible(false);
-        register.setVisible(false);
+        CancelRoom.setVisible(false);
         ChangeRoom.setVisible(false);
         hotelLogin.setVisible(false);
 
@@ -86,6 +87,7 @@ public class Main extends JFrame {
         //button Action Listeners
 
         myActionListener e = new myActionListener();
+
         Make.addActionListener(e);
        // View.addActionListener(e);
         Cancel.addActionListener(e);
@@ -93,50 +95,74 @@ public class Main extends JFrame {
         Change.addActionListener(e);
         ReturnMenu.addActionListener(e);
 
-//////////For Separate Windows Portion now//////
-
-
-
     }
+
+    //add in this window
+    public void RateWindow(){
+        main.setVisible(false);
+        RateRoom.setVisible(true);
+        RateRoom.add(ReturnMenu);
+    }
+
+    //add in this window
+    public void CancelWindow(){
+        main.setVisible(false);
+        CancelRoom.setVisible(true);
+        CancelRoom.add(ReturnMenu);
+    }
+
+    //add in this window
+    public void searchWindow(){
+        main.setVisible(false);
+        Search.setVisible(true);
+        Search.add(ReturnMenu);
+    }
+
+    //add in this window
+    public void ChangeWindow(){
+        main.setVisible(false);
+        ChangeRoom.setVisible(true);
+        ChangeRoom.add(ReturnMenu);
+    }
+
 
     public static void main(String[] args) {
         Main test = new Main();
         test.createAndShowGUI();
-
-//        Make.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent a) {
-//                 main.setVisible(false);
-//                 hotelLogin.setVisible(true);
-//            }
-//        });
-
     }
 
     private class myActionListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
             if (event.getSource() == Make) {
-                main.setVisible(false);
-                Search.setVisible(true);
+                searchWindow();
             } else if (event.getSource() == ReturnMenu){
-                main.setVisible(false);
-                hotelLogin.setVisible(true);
+                ReturnToMenuCases(event);
             } else if (event.getSource() == Cancel){
-                main.setVisible(false);
-                register.setVisible(true);
+                CancelWindow();
             } else if (event.getSource() == Rate){
-                main.setVisible(false);
+               RateWindow();
             } else if (event.getSource() == Change) {
-                main.setVisible(false);
-                ChangeRoom.setVisible(true);
+                ChangeWindow();
             }
         }
 
-        public void actionPerformedCase1 (ActionEvent event){
-
-
+        public void ReturnToMenuCases (ActionEvent event){
+            if ( (RateRoom.isVisible() ) && (event.getSource() == ReturnMenu ) ) {
+                RateRoom.setVisible(false);
+                createAndShowGUI();
+            }  else if ((ChangeRoom.isVisible() ) && (event.getSource() == ReturnMenu ) ){
+                ChangeRoom.setVisible(false);
+                createAndShowGUI();
+            } else if ((Search.isVisible() ) && (event.getSource() == ReturnMenu ) ){
+                Search.setVisible(false);
+                createAndShowGUI();
+            } else if ((CancelRoom.isVisible() ) && (event.getSource() == ReturnMenu ) ) {
+                CancelRoom.setVisible(false);
+                createAndShowGUI();
+            }
         }
 
     }
 }
+
