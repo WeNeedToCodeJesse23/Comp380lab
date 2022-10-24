@@ -140,15 +140,16 @@ public class Main extends JFrame {
 
     //add in this window
     public void searchWindow(){
-        
+        int reg = 0;
+        int lux = 0;
     	
     	main.setVisible(false);
         Search.setVisible(true);
         ReturnMenu.setBounds(280,400,100,50);
         Search.add(ReturnMenu);
         
-        //JScrollPane scrollPane = new JScrollPane();
-        //JList<HotelRoom> roomListView = new JList<HotelRoom>();
+       // JScrollPane scrollPane = new JScrollPane();
+       // JList<HotelRoom> roomListView = new JList<HotelRoom>();
         ArrayList<HotelRoom> roomList = new ArrayList<HotelRoom>();
         Scanner txtInput = null;
 	    try
@@ -166,11 +167,22 @@ public class Main extends JFrame {
         {
         	HotelRoom room = new HotelRoom(txtInput.nextInt(), txtInput.nextBoolean(), txtInput.next(), txtInput.nextInt());
         	System.out.println(room);
+        	if(room.getRoomStatus()) {
+        		if(room.getRoomType().equals("regular")) {
+        			reg++;
+        		}
+        		else {
+        			lux++;
+        		}
+        	}
         	roomList.add(room);
         }
         txtInput.close();
+        if(reg<80){
+        	
+        }
         //scrollPane.setViewportView(roomListView);
-        //scrollPane.setVisible(true);
+        // scrollPane.setVisible(true);
         //Search.add(scrollPane);
         
     }
@@ -256,6 +268,7 @@ public class Main extends JFrame {
             }
 
         }
+        
 
         //this checks login info and implements the Login action
         public void LoginPassword (ActionEvent event){
