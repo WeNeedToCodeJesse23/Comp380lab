@@ -1,9 +1,11 @@
-package com.company;
+//package com.company;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
-
+import java.util.*;
 
 public class Main extends JFrame {
     //frame setup
@@ -129,16 +131,48 @@ public class Main extends JFrame {
             LoginWindow();
         } else {
             main.setVisible(false);
+            ReturnMenu.setBounds(400,400,100,50);
             CancelRoom.setVisible(true);
             CancelRoom.add(ReturnMenu);
+            
         }
     }
 
     //add in this window
     public void searchWindow(){
-        main.setVisible(false);
+        
+    	
+    	main.setVisible(false);
         Search.setVisible(true);
+        ReturnMenu.setBounds(280,400,100,50);
         Search.add(ReturnMenu);
+        
+        //JScrollPane scrollPane = new JScrollPane();
+        //JList<HotelRoom> roomListView = new JList<HotelRoom>();
+        ArrayList<HotelRoom> roomList = new ArrayList<HotelRoom>();
+        Scanner txtInput = null;
+	    try
+	    {
+	       txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms.txt"));
+	       txtInput.useDelimiter(",");
+	    }
+	    catch(FileNotFoundException e)
+	    {
+	       System.out.println("Did you forget the input file?");
+	       System.exit(1);
+	    } //setting up getting input from txt file
+	    
+        while(txtInput.hasNext())
+        {
+        	HotelRoom room = new HotelRoom(txtInput.nextInt(), txtInput.nextBoolean(), txtInput.next(), txtInput.nextInt());
+        	System.out.println(room);
+        	roomList.add(room);
+        }
+        txtInput.close();
+        //scrollPane.setViewportView(roomListView);
+        //scrollPane.setVisible(true);
+        //Search.add(scrollPane);
+        
     }
 
     //add in this window

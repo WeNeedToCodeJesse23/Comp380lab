@@ -1,4 +1,4 @@
-package swinging;
+//package swinging;
 import javax.swing.*;  
 
 public class jira {
