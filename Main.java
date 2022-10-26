@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Main  {
 
 
-    public static void main(String[] args) {              //has a connection to sql database
+    public static void main(String[] args) {              
          GUI test = new GUI();
         test.createAndShowGUI();
     }
