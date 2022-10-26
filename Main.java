@@ -142,6 +142,11 @@ public class Main extends JFrame {
     public void searchWindow(){
         int reg = 0;
         int lux = 0;
+        
+        int roomID = 0;
+        boolean roomStatus = false;
+        String roomType;
+        int numberOfRooms = 0;
     	
     	main.setVisible(false);
         Search.setVisible(true);
@@ -163,10 +168,16 @@ public class Main extends JFrame {
 	       System.exit(1);
 	    } //setting up getting input from txt file
 	    
-        while(txtInput.hasNext())
+        while(txtInput.hasNextLine() == true)
         {
-        	HotelRoom room = new HotelRoom(txtInput.nextInt(), txtInput.nextBoolean(), txtInput.next(), txtInput.nextInt());
-        	System.out.println(room);
+        	String roomInfo = txtInput.nextLine();
+        	String[] roomArray = roomInfo.split(",");
+        	roomID = Integer.parseInt(roomArray[0]);
+        	roomStatus = Boolean.parseBoolean(roomArray[1]);
+            roomType = roomArray[2];
+            numberOfRooms = Integer.parseInt(roomArray[3]);
+        	HotelRoom room = new HotelRoom(roomID, roomStatus, roomType, numberOfRooms);
+        	//System.out.println(room);
         	if(room.getRoomStatus()) {
         		if(room.getRoomType().equals("regular")) {
         			reg++;
