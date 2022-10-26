@@ -143,11 +143,16 @@ public class GUI extends JFrame {
         boolean roomStatus = false;
         String roomType;
         int numberOfRooms = 0;
+        
+        //call the class SearchWindow
+        SearchWindow tryThis = new SearchWindow();
+        tryThis.DoSearch();
 
-        main.setVisible(false);
-        Search.setVisible(true);
-        ReturnMenu.setBounds(280,400,100,50);
-        Search.add(ReturnMenu);
+        //commented this off if you want to see how buttons function with this window
+      //  main.setVisible(false);
+      //  Search.setVisible(true);
+   //     ReturnMenu.setBounds(280,400,100,50);
+     //   Search.add(ReturnMenu);
 
         /*
         // JScrollPane scrollPane = new JScrollPane();
