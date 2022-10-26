@@ -1,6 +1,10 @@
-package com.company;
+//package com.company;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 import javax.swing.*;
@@ -34,7 +38,7 @@ public class GUI extends JFrame {
     int visited; //visited will record the windows visited through integers, to make the conditional statements easier
     //
 
-    GUI(){
+    public GUI(){
     }
 
     //setup mainframe
@@ -136,71 +140,61 @@ public class GUI extends JFrame {
 
     //add in this window
     public void searchWindow(){
-        int reg = 0;
+    	/*int reg = 0;
         int lux = 0;
-
+        
         int roomID = 0;
         boolean roomStatus = false;
         String roomType;
-        int numberOfRooms = 0;
+        int numberOfRooms = 0;*/
+    	
+    	//main.setVisible(false);
+        //Search.setVisible(true);
+        //ReturnMenu.setBounds(280,400,100,50);
+        //Search.add(ReturnMenu);
         
         //call the class SearchWindow
         SearchWindow tryThis = new SearchWindow();
-        tryThis.DoSearch();
-
-        //commented this off if you want to see how buttons function with this window
-      //  main.setVisible(false);
-      //  Search.setVisible(true);
-   //     ReturnMenu.setBounds(280,400,100,50);
-     //   Search.add(ReturnMenu);
-
-        /*
-        // JScrollPane scrollPane = new JScrollPane();
-        // JList<HotelRoom> roomListView = new JList<HotelRoom>();
-        ArrayList<HotelRoom> roomList = new ArrayList<HotelRoom>();
+        //tryThis.DoSearch();
+        
+        /*ArrayList<HotelRoom> roomList = new ArrayList<HotelRoom>();
         Scanner txtInput = null;
-        try
-        {
-            txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms.txt"));
-            txtInput.useDelimiter(",");
-        }
-        catch(FileNotFoundException e)
-        {
-            System.out.println("Did you forget the input file?");
-            System.exit(1);
-        } //setting up getting input from txt file
-
+	    try
+	    {
+	       txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms.txt"));
+	       txtInput.useDelimiter(",");
+	    }
+	    catch(FileNotFoundException e)
+	    {
+	       System.out.println("Did you forget the input file?");
+	       System.exit(1);
+	    } //setting up getting input from txt file
+	    
         while(txtInput.hasNextLine() == true)
         {
-            String roomInfo = txtInput.nextLine();
-            String[] roomArray = roomInfo.split(",");
-            roomID = Integer.parseInt(roomArray[0]);
-            roomStatus = Boolean.parseBoolean(roomArray[1]);
+        	String roomInfo = txtInput.nextLine();
+        	String[] roomArray = roomInfo.split(",");
+        	roomID = Integer.parseInt(roomArray[0]);
+        	roomStatus = Boolean.parseBoolean(roomArray[1]);
             roomType = roomArray[2];
             numberOfRooms = Integer.parseInt(roomArray[3]);
-            HotelRoom room = new HotelRoom(roomID, roomStatus, roomType, numberOfRooms);
-            //System.out.println(room);
-            if(room.getRoomStatus()) {
-                if(room.getRoomType().equals("regular")) {
-                    reg++;
-                }
-                else {
-                    lux++;
-                }
-            }
-            roomList.add(room);
+        	HotelRoom room = new HotelRoom(roomID, roomStatus, roomType, numberOfRooms);
+        	if(room.getRoomStatus()) {
+        		if(room.getRoomType().equals("Regular")) {
+        			reg++;
+        		}
+        		else {
+        			lux++;
+        		}
+        	}
+        	roomList.add(room);
+        	//System.out.println(roomList);
         }
         txtInput.close();
         if(reg<80){
-
-        }
-        //scrollPane.setViewportView(roomListView);
-        // scrollPane.setVisible(true);
-        //Search.add(scrollPane);
-
-         */
-
-
+        	
+        }*/
+        
     }
 
     //add in this window
