@@ -1,13 +1,12 @@
-//package com.company;
+package com.company;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
-import java.util.*;
+import javax.swing.*;
+import java.awt.*;
 
-public class Main extends JFrame {
+public class GUI extends JFrame {
     //frame setup
     JFrame main;
     JFrame Search;
@@ -15,6 +14,7 @@ public class Main extends JFrame {
     JFrame ChangeRoom;
     JFrame RateRoom;
     JFrame hotelLogin;
+
 
     //button setup
     JButton Make;
@@ -24,7 +24,8 @@ public class Main extends JFrame {
     JButton Login;
     JButton ReturnMenu;
 
-    //components need for password               
+
+    //components need for password
     JLabel userLb;
     JTextField userText;
     JLabel passwordLb;
@@ -33,8 +34,7 @@ public class Main extends JFrame {
     int visited; //visited will record the windows visited through integers, to make the conditional statements easier
     //
 
-
-    Main(){
+    GUI(){
     }
 
     //setup mainframe
@@ -42,15 +42,15 @@ public class Main extends JFrame {
         locked = true;
         //visited = 0;
 
-         main = new JFrame("Hotel AOJJ");
-         Search = new JFrame("search");
-         CancelRoom = new JFrame("cancel");
-         ChangeRoom = new JFrame("change room");
-         hotelLogin = new JFrame("Login");
-         RateRoom = new JFrame("Rate");
+        main = new JFrame("Hotel AOJJ");
+      //  Search = new JFrame("search");
+        CancelRoom = new JFrame("cancel");
+        ChangeRoom = new JFrame("change room");
+        hotelLogin = new JFrame("Login");
+        RateRoom = new JFrame("Rate");
 
         main.setSize(700,500);
-        Search.setSize(700,500);
+        //Search.setSize(700,500);
         CancelRoom.setSize(700,500);
         ChangeRoom.setSize(700,500);
         hotelLogin.setSize(700,500);
@@ -64,9 +64,7 @@ public class Main extends JFrame {
         Login = new JButton("Login");
         ReturnMenu = new JButton("Backspace");
 
-
         Make.setBounds(50,25,150, 40);
-       // View.setBounds(200,25,150, 40);
         Cancel.setBounds(350,25,150, 40);
         Rate.setBounds(400,25,150, 40);
         Change.setBounds(500,25,150, 40);
@@ -79,30 +77,29 @@ public class Main extends JFrame {
         main.add(Change);
 
         main.setLayout(new FlowLayout());
-        Search.setLayout(null);
+        //Search.setLayout(null);
         CancelRoom.setLayout(null);
         ChangeRoom.setLayout(null);
         RateRoom.setLayout(null);
         hotelLogin.setLayout(null);
 
         main.setVisible(true);
-        Search.setVisible(false);
+        //Search.setVisible(false);
         CancelRoom.setVisible(false);
         ChangeRoom.setVisible(false);
         hotelLogin.setVisible(false);
-
 
         //button Action Listeners
 
         myActionListener e = new myActionListener();
 
         Make.addActionListener(e);
-       // View.addActionListener(e);
+        // View.addActionListener(e);
         Cancel.addActionListener(e);
         Rate.addActionListener(e);
         Change.addActionListener(e);
         ReturnMenu.addActionListener(e);
-       // password.addKeyListener(e);
+        // password.addKeyListener(e);
 
         Login.addActionListener(e);
 
@@ -131,71 +128,74 @@ public class Main extends JFrame {
             LoginWindow();
         } else {
             main.setVisible(false);
-            ReturnMenu.setBounds(400,400,100,50);
             CancelRoom.setVisible(true);
             CancelRoom.add(ReturnMenu);
-            
         }
     }
+
 
     //add in this window
     public void searchWindow(){
         int reg = 0;
         int lux = 0;
-        
+
         int roomID = 0;
         boolean roomStatus = false;
         String roomType;
         int numberOfRooms = 0;
-    	
-    	main.setVisible(false);
+
+        main.setVisible(false);
         Search.setVisible(true);
         ReturnMenu.setBounds(280,400,100,50);
         Search.add(ReturnMenu);
-        
-       // JScrollPane scrollPane = new JScrollPane();
-       // JList<HotelRoom> roomListView = new JList<HotelRoom>();
+
+        /*
+        // JScrollPane scrollPane = new JScrollPane();
+        // JList<HotelRoom> roomListView = new JList<HotelRoom>();
         ArrayList<HotelRoom> roomList = new ArrayList<HotelRoom>();
         Scanner txtInput = null;
-	    try
-	    {
-	       txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms.txt"));
-	       txtInput.useDelimiter(",");
-	    }
-	    catch(FileNotFoundException e)
-	    {
-	       System.out.println("Did you forget the input file?");
-	       System.exit(1);
-	    } //setting up getting input from txt file
-	    
+        try
+        {
+            txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms.txt"));
+            txtInput.useDelimiter(",");
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Did you forget the input file?");
+            System.exit(1);
+        } //setting up getting input from txt file
+
         while(txtInput.hasNextLine() == true)
         {
-        	String roomInfo = txtInput.nextLine();
-        	String[] roomArray = roomInfo.split(",");
-        	roomID = Integer.parseInt(roomArray[0]);
-        	roomStatus = Boolean.parseBoolean(roomArray[1]);
+            String roomInfo = txtInput.nextLine();
+            String[] roomArray = roomInfo.split(",");
+            roomID = Integer.parseInt(roomArray[0]);
+            roomStatus = Boolean.parseBoolean(roomArray[1]);
             roomType = roomArray[2];
             numberOfRooms = Integer.parseInt(roomArray[3]);
-        	HotelRoom room = new HotelRoom(roomID, roomStatus, roomType, numberOfRooms);
-        	//System.out.println(room);
-        	if(room.getRoomStatus()) {
-        		if(room.getRoomType().equals("regular")) {
-        			reg++;
-        		}
-        		else {
-        			lux++;
-        		}
-        	}
-        	roomList.add(room);
+            HotelRoom room = new HotelRoom(roomID, roomStatus, roomType, numberOfRooms);
+            //System.out.println(room);
+            if(room.getRoomStatus()) {
+                if(room.getRoomType().equals("regular")) {
+                    reg++;
+                }
+                else {
+                    lux++;
+                }
+            }
+            roomList.add(room);
         }
         txtInput.close();
         if(reg<80){
-        	
+
         }
         //scrollPane.setViewportView(roomListView);
         // scrollPane.setVisible(true);
         //Search.add(scrollPane);
-        
+
+         */
+
+
     }
 
     //add in this window
@@ -236,13 +236,7 @@ public class Main extends JFrame {
     }
 
 
-    public static void main(String[] args) {     
-        Main test = new Main();
-        test.createAndShowGUI();
-    }
-
-    private class myActionListener implements ActionListener {
-
+    private class myActionListener implements ActionListener  {
         //Button actions
         public void actionPerformed(ActionEvent event) {
             if (event.getSource() == Make) {
@@ -265,7 +259,7 @@ public class Main extends JFrame {
             if ( (RateRoom.isVisible() ) && (event.getSource() == ReturnMenu ) ) {
                 RateRoom.setVisible(false);
                 createAndShowGUI();
-            }  else if ((ChangeRoom.isVisible() ) && (event.getSource() == ReturnMenu ) ){
+            }  else if ((ChangeRoom.isVisible() ) && (event.getSource() == ReturnMenu ) ) {
                 ChangeRoom.setVisible(false);
                 createAndShowGUI();
             } else if ((Search.isVisible() ) && (event.getSource() == ReturnMenu ) ){
@@ -279,7 +273,6 @@ public class Main extends JFrame {
             }
 
         }
-        
 
         //this checks login info and implements the Login action
         public void LoginPassword (ActionEvent event){
@@ -303,4 +296,6 @@ public class Main extends JFrame {
         }
     }
 }
+
+
 
