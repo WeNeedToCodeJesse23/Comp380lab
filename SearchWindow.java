@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionListener;
 
 public class SearchWindow extends JFrame {
     JFrame ThisWindow;
@@ -22,11 +22,11 @@ public class SearchWindow extends JFrame {
   
 
     public SearchWindow(){
-    	 ThisWindow = new JFrame("search");
+    	ThisWindow = new JFrame("search");
         backspace = new JButton("Back Space");
         MakeReservationButton = new JButton("Make Reservation");
-        backspace.setBounds(500,25,150, 40);
-        MakeReservationButton.setBounds(500,100,100, 100);
+        backspace.setBounds(500, 25, 150, 40);
+        MakeReservationButton.setBounds(250, 25, 150, 40);
 
         ThisWindow.setSize(700, 500);
         ThisWindow.setLayout(null);
@@ -44,7 +44,7 @@ public class SearchWindow extends JFrame {
     }
 
   //read the text file 
-    public ArrayList<HotelRoom> loadData() { //Invalid method declaration; return type required     
+    public void loadData() { //Invalid method declaration; return type required //ArrayList<HotelRoom> -> void    
       
         roomID = 0;
         roomStatus = false;
@@ -73,9 +73,9 @@ public class SearchWindow extends JFrame {
           numberOfRooms = Integer.parseInt(roomArray[3]);
         	HotelRoom room = new HotelRoom(roomID, roomStatus, roomType, numberOfRooms);
         	roomList.add(room);
-        	//System.out.println(roomList);
+        	System.out.println(roomList);
         }
-      return roomList; 
+      //return roomList; 
     }
 
   //check if there are available rooms left for regular rooms

@@ -10,19 +10,82 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionListener;
+//private String name;
+//private String addy;
+//private String emaddy;
+//private String paytype;
+//private String custID;
+//private int roomID;
 
+public class makeReservation /*extends JFrame*/ {
+    JFrame reserveWindow;
+    JPanel panel;
+    
+    JLabel nameLabel;
+    JLabel addressLabel;
+    JLabel emailLabel;
+    //JLabel payment;
+    
+    JTextField nameField = new JTextField(20);
+    JTextField emailField = new JTextField(345);
+    JTextField addressField = new JTextField();
+    
+    JButton backspace;
+    JButton reserve;
+    myActionListener listener = new myActionListener();
 
-public class makeReservation extends JFrame {
-    JFrame test;
-    JButton backspace;  
+    public makeReservation(){
+        reserveWindow = new JFrame();
+        panel = new JPanel();
+        backspace = new JButton("Backspace");
+        reserve = new JButton("Reserve");
+        
+        nameLabel = new JLabel("Name:");
+        addressLabel = new JLabel("Address:");
+        emailLabel = new JLabel("Email:");
+        
+        nameField = new JTextField(20);
+        emailField = new JTextField(345);
+        addressField = new JTextField();
+        
+        reserveWindow.setSize(700, 500);
+        panel.setLayout(null);
+        reserveWindow.add(panel);
+        backspace.setBounds(500, 350, 150, 40);
+        reserve.setBounds(250, 350, 150, 40);
+        
+        nameLabel.setBounds(10, 100, 80, 25);
+        addressLabel.setBounds(10, 150, 80, 25);
+        emailLabel.setBounds(10, 200, 80, 25);
+        
+        nameField.setBounds(100, 100, 500, 25);
+        addressField.setBounds(100, 150, 500, 25);
+        emailField.setBounds(100, 200, 500, 25);
+        
+        panel.add(backspace);
+        panel.add(reserve);
+        panel.add(nameLabel);
+        panel.add(emailLabel);
+        panel.add(addressLabel);
+        panel.add(nameField);
+        panel.add(emailField);
+        panel.add(addressField);
+        
+        
+        reserveWindow.setVisible(true);
+        
+        reserve.addActionListener(listener);
+        backspace.addActionListener(listener);
+    }
 
-  public void LuxuryWindow(){
+    
+  /*public void LuxuryWindow(){
 
-  }
+  }*/
 
-  public void RegularWindow(){
-            test = new JFrame("reserve");
+  /*public void RegularWindow(){
+        test = new JFrame("reserve");
         backspace = new JButton("Back Space");
    
         
@@ -37,24 +100,39 @@ public class makeReservation extends JFrame {
       
         myActionListener Dothis = new myActionListener();
         backspace.addActionListener(Dothis);    
-  }
+  }*/
 
-    public makeReservation(){
-      
-    }
+    
 
 
-  
     private class myActionListener implements ActionListener {
 
         //Button actions
         public void actionPerformed(ActionEvent event) {
              if (event.getSource() == backspace) {
-                test.setVisible(false);
-                SearchWindow tryme = new SearchWindow();      
-            }
+                reserveWindow.setVisible(false);
+                SearchWindow searchWin = new SearchWindow();  
+                //searchWin.setVisible(true);
+             }
+             else if(event.getSource() == reserve)
+             {
+            	 String name = nameField.getText();
+            	 String address = addressField.getText();
+            	 String email = emailField.getText();
+            	 
+            	 System.out.println("Reserved!\n"
+            	 		+ "Provided Info:\n"
+            	 		+ "Name: " + name + "\n"
+            	 		+ "Email: " + email + "\n"
+            	 		+ "Address: " + address + "\n");
+             }
         }
     }
+    
+    /*public  
+    {
+    	
+    }*/
 }
 
 	//Button actions

@@ -114,8 +114,8 @@ public class GUI extends JFrame {
     //add in this window
     public void searchWindow(){
 
-
-        SearchWindow tryThis = new SearchWindow();
+    	SearchWindow tryThis = new SearchWindow();
+    	//tryThis.loadData();
         main.setVisible(false);
 
     }
