@@ -1,3 +1,4 @@
+//package com.company;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -16,8 +17,12 @@ public class makeReservation extends JFrame {
     JFrame test;
     JButton backspace;  
 
-    public makeReservation(){
-    	test = new JFrame("reserve");
+  public void LuxuryWindow(){
+
+  }
+
+  public void RegularWindow(){
+            test = new JFrame("reserve");
         backspace = new JButton("Back Space");
    
         
@@ -31,21 +36,24 @@ public class makeReservation extends JFrame {
         backspace.setVisible(true);
       
         myActionListener Dothis = new myActionListener();
-        backspace.addActionListener(Dothis);
+        backspace.addActionListener(Dothis);    
+  }
+
+    public makeReservation(){
+      
     }
+
+
+  
     private class myActionListener implements ActionListener {
 
         //Button actions
         public void actionPerformed(ActionEvent event) {
              if (event.getSource() == backspace) {
                 test.setVisible(false);
-                SearchWindow tryme = new SearchWindow();
-               
+                SearchWindow tryme = new SearchWindow();      
             }
         }
-
-
-     
     }
 }
 
