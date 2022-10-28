@@ -10,36 +10,47 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 public class SearchWindow extends JFrame {
-    JFrame test;
-    JButton backspace;  
+    JFrame ThisWindow;
+    JButton backspace;
+    JButton MakeReservationButton;
+    int roomID = 0;
+    boolean roomStatus = false;
+    String roomType;
+    int numberOfRooms = 0;
+    ArrayList<HotelRoom> roomList;
+     
+  
 
     public SearchWindow(){
-    	test = new JFrame("search");
+    	 ThisWindow = new JFrame("search");
         backspace = new JButton("Back Space");
-        backspace.setBounds(EXIT_ON_CLOSE, ABORT, WIDTH, HEIGHT);
-        test.setSize(700,500);
-       // Search.setLayout(null);
+        MakeReservationButton = new JButton("Make Reservation");
+        backspace.setBounds(500,25,150, 40);
+        MakeReservationButton.setBounds(500,100,100, 100);
 
-       // main.setVisible(false);
-        test.setVisible(true);
-        test.add(backspace);
+        ThisWindow.setSize(700, 500);
+        ThisWindow.setLayout(null);
+        ThisWindow.setVisible(true);
+        
+        ThisWindow.add(MakeReservationButton);
+        ThisWindow.add(backspace);
         backspace.setVisible(true);
-      
+        MakeReservationButton.setVisible(true);
+        ThisWindow.setVisible(true);
+
         myActionListener Dothis = new myActionListener();
         backspace.addActionListener(Dothis);
+        MakeReservationButton.addActionListener(Dothis);
     }
 
   //read the text file 
-    public ArrayList<HotelRoom> loadData() { //Invalid method declaration; return type required
-      int reg = 0;
-      int lux = 0;
-        
-      int roomID = 0;
-      boolean roomStatus = false;
-      String roomType;
-      int numberOfRooms = 0;
-      ArrayList<HotelRoom> roomList = new ArrayList<HotelRoom>();
-      Scanner txtInput = null;
+    public ArrayList<HotelRoom> loadData() { //Invalid method declaration; return type required     
+      
+        roomID = 0;
+        roomStatus = false;
+        numberOfRooms = 0;
+        roomList = new ArrayList<>();
+        Scanner txtInput = null;
 	    
       try
 	    {
@@ -76,11 +87,6 @@ public class SearchWindow extends JFrame {
         if( (roomList.get(counter).getRoomStatus() == false) && (roomList.get(counter).getRoomType().equals("Regular")) )
         {
             reg++;
-        		/*if(room.getRoomType().equals("Regular")) 
-            {
-        			reg++;
-              return reg;
-            }*/
         }
       }
       return reg;
@@ -95,11 +101,6 @@ public class SearchWindow extends JFrame {
         if( (roomList.get(counter).getRoomStatus() == false) && (roomList.get(counter).getRoomType().equals("Luxury")) )
         {
             lux++;
-        		/*if(room.getRoomType().equals("Regular")) 
-            {
-        			reg++;
-              return reg;
-            }*/
         }
       }
       return lux;
@@ -111,18 +112,13 @@ public class SearchWindow extends JFrame {
         //Button actions
         public void actionPerformed(ActionEvent event) {
              if (event.getSource() == backspace) {
-                test.setVisible(false);
+                ThisWindow.setVisible(false);
                 GUI goBack = new GUI();
                 goBack.createAndShowGUI();
+            } if(event.getSource() == MakeReservationButton){
+                 ThisWindow.setVisible(false);
+                 makeReservation reservationWindow = new makeReservation();
             }
         }
-
-
-     
     }
-
-  
 }
-
-
-
