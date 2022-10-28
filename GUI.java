@@ -1,4 +1,4 @@
-//package com.company;
+package com.company;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -11,7 +11,6 @@ public class GUI extends JFrame {
     //frame setup
     JFrame main;
     JFrame hotelLogin;
-
     //button setup
     JButton Make;
     JButton Cancel;
@@ -26,7 +25,7 @@ public class GUI extends JFrame {
     JLabel passwordLb;
     JPasswordField password;
     boolean locked;
-    int visited; //visited will record the windows visited through integers, to make the conditional statements easier
+    int visited;         //visited will record the windows visited through integers, to make the conditional statements easier
 
 
     GUI(){
@@ -36,7 +35,6 @@ public class GUI extends JFrame {
     //setup mainframe
     public void createAndShowGUI () {
         locked = true;
-        //visited = 0;
         main = new JFrame("Hotel AOJJ");
         hotelLogin = new JFrame("Login");
         main.setSize(700,500);
@@ -67,10 +65,8 @@ public class GUI extends JFrame {
 
         main.setLayout(new FlowLayout());
         hotelLogin.setLayout(null);
-
         main.setVisible(true);
         hotelLogin.setVisible(false);
-
 
         //button Action Listeners
 
@@ -82,21 +78,17 @@ public class GUI extends JFrame {
         Change.addActionListener(e);
         ReturnMenu.addActionListener(e);
         Login.addActionListener(e);
-
-
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
     }
 
-    //add in this window
+    //WindowNotYetMade
     public void RateWindow(){
         visited = 1;
         if(locked){
             LoginWindow();
         } else {
+            System.out.println("this button functions");
             main.setVisible(false);
-
         }
     }
 
@@ -106,26 +98,24 @@ public class GUI extends JFrame {
         if(locked){
             LoginWindow();
         } else {
+            CancelWindow DoThis = new CancelWindow();
             main.setVisible(false);
-
         }
     }
 
     //add in this window
     public void searchWindow(){
-
-    	SearchWindow tryThis = new SearchWindow();
-    	//tryThis.loadData();
+        SearchWindow tryThis = new SearchWindow();
         main.setVisible(false);
-
     }
 
-    //add in this window
+    //Window Not Yet Made
     public void ChangeWindow(){
         visited = 3;
         if(locked){
             LoginWindow();
         } else {
+            System.out.println("this button functions");
             main.setVisible(false);
         }
     }
@@ -179,10 +169,11 @@ public class GUI extends JFrame {
         public void ReturnToMenuCases (ActionEvent event){
       if ((hotelLogin.isVisible() ) && (event.getSource() == ReturnMenu ) ) {
                 hotelLogin.setVisible(false);
+                main.setVisible(false);
+                createAndShowGUI();
             }
 
         }
-
 
         //this checks login info and implements the Login action
         public void LoginPassword (ActionEvent event){
@@ -203,6 +194,7 @@ public class GUI extends JFrame {
                         break;
                 }
             }
+
         }
     }
 }
