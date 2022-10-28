@@ -13,11 +13,11 @@ public class SearchWindow extends JFrame {
     JFrame ThisWindow;
     JButton backspace;
     JButton MakeReservationButton;
-    int roomID = 0;
-    boolean roomStatus = false;
-    String roomType;
-    int numberOfRooms = 0;
-    ArrayList<HotelRoom> roomList;
+    static int roomID = 0;
+    static boolean roomStatus = false;
+    static String roomType;
+    static int numberOfRooms = 0;
+    static ArrayList<HotelRoom> roomList;
      
   
 
@@ -44,7 +44,7 @@ public class SearchWindow extends JFrame {
     }
 
   //read the text file 
-    public void loadData() { //Invalid method declaration; return type required //ArrayList<HotelRoom> -> void    
+    public static void loadData() { //Invalid method declaration; return type required //ArrayList<HotelRoom> -> void    
       
         roomID = 0;
         roomStatus = false;
@@ -79,7 +79,7 @@ public class SearchWindow extends JFrame {
     }
 
   //check if there are available rooms left for regular rooms
-    public int numAvailReg(ArrayList<HotelRoom> roomList)
+    public static int numAvailReg(/*ArrayList<HotelRoom> roomList*/)
     {
       int reg = 0;
       for(int counter = 0; counter < roomList.size(); counter++)
@@ -93,7 +93,7 @@ public class SearchWindow extends JFrame {
     }
 
   //checks if there are available rooms left for luxury room
-    public int numAvailLux(ArrayList<HotelRoom> roomList)
+    public static int numAvailLux(/*ArrayList<HotelRoom> roomList*/)
     {
       int lux = 0;
       for(int counter = 0; counter < roomList.size(); counter++)
@@ -115,9 +115,15 @@ public class SearchWindow extends JFrame {
                 ThisWindow.setVisible(false);
                 GUI goBack = new GUI();
                 goBack.createAndShowGUI();
+                ThisWindow.dispose();
             } if(event.getSource() == MakeReservationButton){
+            	
+            	 SearchWindow.loadData();
+            	 System.out.println(SearchWindow.numAvailLux());
+            	 System.out.println(SearchWindow.numAvailReg());
                  ThisWindow.setVisible(false);
                  makeReservation reservationWindow = new makeReservation();
+                 
             }
         }
     }

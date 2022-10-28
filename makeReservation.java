@@ -25,15 +25,22 @@ public class makeReservation /*extends JFrame*/ {
     JLabel nameLabel;
     JLabel addressLabel;
     JLabel emailLabel;
-    //JLabel payment;
+    JLabel cardNumberLabel;
     
     JTextField nameField = new JTextField(20);
     JTextField emailField = new JTextField(345);
     JTextField addressField = new JTextField();
+    JTextField cardNumberField = new JTextField();
     
     JButton backspace;
     JButton reserve;
     myActionListener listener = new myActionListener();
+    
+    int roomID;
+    boolean roomStatus;
+    String roomType;
+    int numberOfRooms;
+    ArrayList<HotelRoom> roomList;
 
     public makeReservation(){
         reserveWindow = new JFrame();
@@ -44,10 +51,12 @@ public class makeReservation /*extends JFrame*/ {
         nameLabel = new JLabel("Name:");
         addressLabel = new JLabel("Address:");
         emailLabel = new JLabel("Email:");
+        cardNumberLabel = new JLabel("Card Number:");
         
         nameField = new JTextField(20);
         emailField = new JTextField(345);
         addressField = new JTextField();
+        cardNumberField = new JTextField();
         
         reserveWindow.setSize(700, 500);
         panel.setLayout(null);
@@ -58,19 +67,23 @@ public class makeReservation /*extends JFrame*/ {
         nameLabel.setBounds(10, 100, 80, 25);
         addressLabel.setBounds(10, 150, 80, 25);
         emailLabel.setBounds(10, 200, 80, 25);
+        cardNumberLabel.setBounds(10, 250, 80, 25);
         
         nameField.setBounds(100, 100, 500, 25);
         addressField.setBounds(100, 150, 500, 25);
         emailField.setBounds(100, 200, 500, 25);
+        cardNumberField.setBounds(100, 250, 500, 25);
         
         panel.add(backspace);
         panel.add(reserve);
         panel.add(nameLabel);
         panel.add(emailLabel);
         panel.add(addressLabel);
+        panel.add(cardNumberLabel);
         panel.add(nameField);
         panel.add(emailField);
         panel.add(addressField);
+        panel.add(cardNumberField);
         
         
         reserveWindow.setVisible(true);
@@ -112,27 +125,68 @@ public class makeReservation /*extends JFrame*/ {
              if (event.getSource() == backspace) {
                 reserveWindow.setVisible(false);
                 SearchWindow searchWin = new SearchWindow();  
-                //searchWin.setVisible(true);
+                reserveWindow.dispose();
              }
              else if(event.getSource() == reserve)
              {
             	 String name = nameField.getText();
             	 String address = addressField.getText();
             	 String email = emailField.getText();
+            	 String cardNumber = cardNumberField.getText();
+            	 Customer userInfo = new Customer(name, address, email, cardNumber);
             	 
-            	 System.out.println("Reserved!\n"
+            	 System.out.println(userInfo);
+            	 //SearchWindow.loadData();
+            	 
+            	 /*System.out.println("Reserved!\n"
             	 		+ "Provided Info:\n"
             	 		+ "Name: " + name + "\n"
             	 		+ "Email: " + email + "\n"
-            	 		+ "Address: " + address + "\n");
+            	 		+ "Address: " + address + "\n");*/
              }
         }
     }
     
-    /*public  
-    {
+/*public ArrayList<HotelRoom> loadData() { //Invalid method declaration; return type required //ArrayList<HotelRoom> -> void    
+        
+        int roomID;
+        boolean roomStatus;
+        String roomType;
+        int numberOfRooms;
+        ArrayList<HotelRoom> roomList;
     	
+    	roomID = 0;
+        roomStatus = false;
+        numberOfRooms = 0;
+        roomList = new ArrayList<>();
+        Scanner txtInput = null;
+	    
+      try
+	    {
+	       txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms.txt"));
+	       txtInput.useDelimiter(",");
+	    }
+	    catch(FileNotFoundException e)
+	    {
+	       System.out.println("Did you forget the input file?");
+	       System.exit(1);
+	    } //setting up getting input from txt file
+	    
+        while(txtInput.hasNextLine() == true)
+        {
+        	String roomInfo = txtInput.nextLine();
+        	String[] roomArray = roomInfo.split(",");
+        	roomID = Integer.parseInt(roomArray[0]);
+        	roomStatus = Boolean.parseBoolean(roomArray[1]);
+          roomType = roomArray[2];
+          numberOfRooms = Integer.parseInt(roomArray[3]);
+        	HotelRoom room = new HotelRoom(roomID, roomStatus, roomType, numberOfRooms);
+        	roomList.add(room);
+        	System.out.println(roomList);
+        }
+      return roomList; 
     }*/
+
 }
 
 	//Button actions

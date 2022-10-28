@@ -1,4 +1,4 @@
-package com.company;
+//package com.company;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -98,7 +98,7 @@ public class GUI extends JFrame {
         if(locked){
             LoginWindow();
         } else {
-            CancelWindow DoThis = new CancelWindow();
+            CancelReservationWindow DoThis = new CancelReservationWindow();
             main.setVisible(false);
         }
     }

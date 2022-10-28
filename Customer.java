@@ -1,12 +1,23 @@
+import java.lang.Math;
 
 public class Customer {
 	
 	private String name;
-	private String addy;
-	private String emaddy;
-	private String paytype;
+	private String address;
+	private String email;
+	private String cardNumber;
 	private String custID;
 	private int roomID;
+	
+	public Customer(String name, String address, String email, String cardNumber)
+	{
+		this.name = name;
+		this.address = address;
+		this.email = email;
+		this.cardNumber = cardNumber;
+		custID = Integer.toString((int)(Math.random()));
+		roomID = 1 + (int)(Math.random() * ((80 - 1) + 1));
+	}
 	
 	public String getPass() {
 		return pass;
@@ -30,22 +41,22 @@ public class Customer {
 		this.name = name;
 	}
 	public String getAddy() {
-		return addy;
+		return address;
 	}
-	public void setAddy(String addy) {
-		this.addy = addy;
+	public void setAddy(String address) {
+		this.address = address;
 	}
 	public String getEmaddy() {
-		return emaddy;
+		return email;
 	}
-	public void setEmaddy(String emaddy) {
-		this.emaddy = emaddy;
+	public void setEmaddy(String email) {
+		this.email = email;
 	}
 	public String getPaytype() {
-		return paytype;
+		return cardNumber;
 	}
-	public void setPaytype(String paytype) {
-		this.paytype = paytype;
+	public void setPaytype(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 	public String getCustID() {
 		return custID;
@@ -53,7 +64,11 @@ public class Customer {
 	public void setCustID(String custID) {
 		this.custID = custID;
 	}
-
 	
+	@Override
+	public String toString(){
+		String roomFormat = "Name: " + name +  "\tEmail: " + email + "\tAddress: " + address + "\tCard Number: " + cardNumber + "\tCustomer ID: " + custID + "\tRoomID: " + roomID;
+		return roomFormat;
+	} 
 
 }
