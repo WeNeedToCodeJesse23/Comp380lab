@@ -146,46 +146,6 @@ public class makeReservation /*extends JFrame*/ {
              }
         }
     }
-    
-/*public ArrayList<HotelRoom> loadData() { //Invalid method declaration; return type required //ArrayList<HotelRoom> -> void    
-        
-        int roomID;
-        boolean roomStatus;
-        String roomType;
-        int numberOfRooms;
-        ArrayList<HotelRoom> roomList;
-    	
-    	roomID = 0;
-        roomStatus = false;
-        numberOfRooms = 0;
-        roomList = new ArrayList<>();
-        Scanner txtInput = null;
-	    
-      try
-	    {
-	       txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms.txt"));
-	       txtInput.useDelimiter(",");
-	    }
-	    catch(FileNotFoundException e)
-	    {
-	       System.out.println("Did you forget the input file?");
-	       System.exit(1);
-	    } //setting up getting input from txt file
-	    
-        while(txtInput.hasNextLine() == true)
-        {
-        	String roomInfo = txtInput.nextLine();
-        	String[] roomArray = roomInfo.split(",");
-        	roomID = Integer.parseInt(roomArray[0]);
-        	roomStatus = Boolean.parseBoolean(roomArray[1]);
-          roomType = roomArray[2];
-          numberOfRooms = Integer.parseInt(roomArray[3]);
-        	HotelRoom room = new HotelRoom(roomID, roomStatus, roomType, numberOfRooms);
-        	roomList.add(room);
-        	System.out.println(roomList);
-        }
-      return roomList; 
-    }*/
 
 }
 
