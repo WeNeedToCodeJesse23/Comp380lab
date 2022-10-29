@@ -58,6 +58,11 @@ public class HotelRoom {
 		return roomList;
 	}
 	
+	public static void clearRoomList()
+	{
+		roomList.clear();
+	}
+	
 	//read the text file holding the data
     public static void loadHotelData() { //Invalid method declaration; return type required //ArrayList<HotelRoom> -> void    
       
@@ -94,7 +99,7 @@ public class HotelRoom {
           	numberOfRooms = Integer.parseInt(roomArray[3]);
         	HotelRoom room = new HotelRoom(roomID, roomStatus, roomType, numberOfRooms);
         	roomList.add(room);
-        	System.out.println(roomList);
+        	//System.out.println(roomList);
         }
       //return roomList; 
     }

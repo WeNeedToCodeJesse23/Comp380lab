@@ -126,6 +126,8 @@ public class makeReservation /*extends JFrame*/ {
                 reserveWindow.setVisible(false);
                 SearchWindow searchWin = new SearchWindow();  
                 reserveWindow.dispose();
+                HotelRoom.clearRoomList();
+                Customer.clearCustomerList();
              }
              else if(event.getSource() == reserve)
              {

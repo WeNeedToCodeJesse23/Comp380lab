@@ -56,6 +56,7 @@ public class SearchWindow extends JFrame {
             } if(event.getSource() == MakeReservationButton){
             	
             	 HotelRoom.loadHotelData();
+            	 Customer.loadCustomerData();
             	 System.out.println(HotelRoom.numAvailLux());
             	 System.out.println(HotelRoom.numAvailReg());
                  ThisWindow.setVisible(false);

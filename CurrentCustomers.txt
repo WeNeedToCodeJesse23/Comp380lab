@@ -1,5 +1,5 @@
 Jen,129 Logan Ave. New City NY 10956,gen1@maildrop.cc,1234567891234560,1,45
-George,20 Marlborough Road North Tonawanda NY 14120,gen2@maildrop.cc,1234567891234560,2,73
+George,20 Marlborough Road North Tonawanda NY 14120,gen2@maildrop.cc,1234567891234560,2,72
 Ann,21 Marlborough Road North Tonawanda NY 14120,gen3@maildrop.cc,1234567891234560,3,39
 Matt,52 Marlborough Road North Tonawanda NY 14120,gen1@maildrop.cc,1234567891234560,4,6
 Jaztin,53 Marlborough Road North Tonawanda NY 14120,gen2@maildrop.cc,1234567891234560,5,21
