@@ -43,10 +43,10 @@ public class SearchWindow extends JFrame {
     	ThisWindow = new JFrame("search");
         backspace = new JButton("Back Space");
         MakeReservationButton = new JButton("Make Reservation");
-        backspace.setBounds(500, 25, 150, 40);
-        MakeReservationButton.setBounds(250, 25, 150, 40);
+         backspace.setBounds(20, 25, 150, 40);
+        MakeReservationButton.setBounds(20, 80, 150, 40);
 
-        ThisWindow.setSize(700, 500);
+        ThisWindow.setSize(10000, 10000);
         ThisWindow.setLayout(null);
         ThisWindow.setVisible(true);
         
