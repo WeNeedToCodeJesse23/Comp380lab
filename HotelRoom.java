@@ -104,6 +104,12 @@ public class HotelRoom {
       //return roomList; 
     }
 	
+	  //The Collection must call LoadData before you can Return the Collection, Otherwise the Data will be returned as empty
+    public static ArrayList<HotelRoom> ReturnCollection(){
+            return roomList;
+    }
+	
+	
     //write to text file
     public static void writeHotelData()
     {
