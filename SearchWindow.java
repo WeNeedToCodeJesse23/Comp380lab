@@ -13,11 +13,29 @@ public class SearchWindow extends JFrame {
     JFrame ThisWindow;
     JButton backspace;
     JButton MakeReservationButton;
-    //static int roomID = 0;
-    //static boolean roomStatus = false;
-    //static String roomType;
-    //static int numberOfRooms = 0;
-    //static ArrayList<HotelRoom> roomList;
+    
+        public void makeTable(){
+        ArrayList testy = HotelRoom.ReturnCollection();
+
+        Stream<HotelRoom> spet = testy.stream();
+        Spliterator<HotelRoom> sptr = spet.spliterator();
+
+        String Column[] = {"Room","Room Status","Room Type","Number of Beds"};
+        DefaultTableModel DataTable = new DefaultTableModel(Column,0);
+        sptr.forEachRemaining((n) -> DataTable.addRow(new Object[]{n.getRoomID(), n.getRoomStatus(),n.getRoomType(), n.getNumberOfBeds()}));
+        // sptr.forEachRemaining((n) -> System.out.println(n)); //test to print out the data stored in HotelRoom in console.
+
+        JTable DeTable = new JTable(DataTable);
+
+        DeTable.setPreferredScrollableViewportSize(new Dimension(30,100000));
+        DeTable.setFillsViewportHeight(true);
+
+        JScrollPane fr = new JScrollPane(DeTable);
+
+        fr.setBounds(300,10,700,10000);
+        fr.setVisible(true);
+        ThisWindow.add(fr);
+    }
      
   
 
@@ -41,6 +59,8 @@ public class SearchWindow extends JFrame {
         myActionListener Dothis = new myActionListener();
         backspace.addActionListener(Dothis);
         MakeReservationButton.addActionListener(Dothis);
+        makeTable();
+
     }
 
   //make actions 
@@ -55,8 +75,8 @@ public class SearchWindow extends JFrame {
                 ThisWindow.dispose();
             } if(event.getSource() == MakeReservationButton){
             	
-            	 HotelRoom.loadHotelData();
-            	 Customer.loadCustomerData();
+            	// HotelRoom.loadHotelData();
+            	// Customer.loadCustomerData();
             	 System.out.println(HotelRoom.numAvailLux());
             	 System.out.println(HotelRoom.numAvailReg());
                  ThisWindow.setVisible(false);
