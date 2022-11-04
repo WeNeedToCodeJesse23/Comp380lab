@@ -7,102 +7,60 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionListener;
 
 public class SearchWindow extends JFrame {
-    JFrame test;
-    JButton backspace;  
+    JFrame ThisWindow;
+    JButton backspace;
+    JButton MakeReservationButton;
+    
+        public void makeTable(){
+        ArrayList testy = HotelRoom.ReturnCollection();
+
+        Stream<HotelRoom> spet = testy.stream();
+        Spliterator<HotelRoom> sptr = spet.spliterator();
+
+        String Column[] = {"Room","Room Status","Room Type","Number of Beds"};
+        DefaultTableModel DataTable = new DefaultTableModel(Column,0);
+        sptr.forEachRemaining((n) -> DataTable.addRow(new Object[]{n.getRoomID(), n.getRoomStatus(),n.getRoomType(), n.getNumberOfBeds()}));
+        // sptr.forEachRemaining((n) -> System.out.println(n)); //test to print out the data stored in HotelRoom in console.
+
+        JTable DeTable = new JTable(DataTable);
+
+        DeTable.setPreferredScrollableViewportSize(new Dimension(30,100000));
+        DeTable.setFillsViewportHeight(true);
+
+        JScrollPane fr = new JScrollPane(DeTable);
+
+        fr.setBounds(300,10,700,10000);
+        fr.setVisible(true);
+        ThisWindow.add(fr);
+    }
+     
+  
 
     public SearchWindow(){
-    	test = new JFrame("search");
+    	ThisWindow = new JFrame("search");
         backspace = new JButton("Back Space");
-        backspace.setBounds(EXIT_ON_CLOSE, ABORT, WIDTH, HEIGHT);
-        test.setSize(700,500);
-       // Search.setLayout(null);
+        MakeReservationButton = new JButton("Make Reservation");
+         backspace.setBounds(20, 25, 150, 40);
+        MakeReservationButton.setBounds(20, 80, 150, 40);
 
-       // main.setVisible(false);
-        test.setVisible(true);
-        test.add(backspace);
+        ThisWindow.setSize(10000, 10000);
+        ThisWindow.setLayout(null);
+        ThisWindow.setVisible(true);
+        
+        ThisWindow.add(MakeReservationButton);
+        ThisWindow.add(backspace);
         backspace.setVisible(true);
-      
+        MakeReservationButton.setVisible(true);
+        ThisWindow.setVisible(true);
+
         myActionListener Dothis = new myActionListener();
         backspace.addActionListener(Dothis);
-    }
+        MakeReservationButton.addActionListener(Dothis);
+        makeTable();
 
-  //read the text file 
-    public ArrayList<HotelRoom> loadData() { //Invalid method declaration; return type required
-      int reg = 0;
-      int lux = 0;
-        
-      int roomID = 0;
-      boolean roomStatus = false;
-      String roomType;
-      int numberOfRooms = 0;
-      ArrayList<HotelRoom> roomList = new ArrayList<HotelRoom>();
-      Scanner txtInput = null;
-	    
-      try
-	    {
-	       txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms.txt"));
-	       txtInput.useDelimiter(",");
-	    }
-	    catch(FileNotFoundException e)
-	    {
-	       System.out.println("Did you forget the input file?");
-	       System.exit(1);
-	    } //setting up getting input from txt file
-	    
-        while(txtInput.hasNextLine() == true)
-        {
-        	String roomInfo = txtInput.nextLine();
-        	String[] roomArray = roomInfo.split(",");
-        	roomID = Integer.parseInt(roomArray[0]);
-        	roomStatus = Boolean.parseBoolean(roomArray[1]);
-          roomType = roomArray[2];
-          numberOfRooms = Integer.parseInt(roomArray[3]);
-        	HotelRoom room = new HotelRoom(roomID, roomStatus, roomType, numberOfRooms);
-        	roomList.add(room);
-        	//System.out.println(roomList);
-        }
-      return roomList; 
-    }
-
-  //check if there are available rooms left for regular rooms
-    public int numAvailReg(ArrayList<HotelRoom> roomList)
-    {
-      int reg = 0;
-      for(int counter = 0; counter < roomList.size(); counter++)
-      {
-        if( (roomList.get(counter).getRoomStatus() == false) && (roomList.get(counter).getRoomType().equals("Regular")) )
-        {
-            reg++;
-        		/*if(room.getRoomType().equals("Regular")) 
-            {
-        			reg++;
-              return reg;
-            }*/
-        }
-      }
-      return reg;
-    }
-
-  //checks if there are available rooms left for luxury room
-    public int numAvailLux(ArrayList<HotelRoom> roomList)
-    {
-      int lux = 0;
-      for(int counter = 0; counter < roomList.size(); counter++)
-      {
-        if( (roomList.get(counter).getRoomStatus() == false) && (roomList.get(counter).getRoomType().equals("Luxury")) )
-        {
-            lux++;
-        		/*if(room.getRoomType().equals("Regular")) 
-            {
-        			reg++;
-              return reg;
-            }*/
-        }
-      }
-      return lux;
     }
 
   //make actions 
@@ -111,18 +69,20 @@ public class SearchWindow extends JFrame {
         //Button actions
         public void actionPerformed(ActionEvent event) {
              if (event.getSource() == backspace) {
-                test.setVisible(false);
+                ThisWindow.setVisible(false);
                 GUI goBack = new GUI();
                 goBack.createAndShowGUI();
+                ThisWindow.dispose();
+            } if(event.getSource() == MakeReservationButton){
+            	
+            	// HotelRoom.loadHotelData();
+            	// Customer.loadCustomerData();
+            	 System.out.println(HotelRoom.numAvailLux());
+            	 System.out.println(HotelRoom.numAvailReg());
+                 ThisWindow.setVisible(false);
+                 makeReservation reservationWindow = new makeReservation();
+                 
             }
         }
-
-
-     
     }
-
-  
 }
-
-
-
