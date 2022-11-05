@@ -110,9 +110,39 @@ public class HotelRoom {
     }
 	
 	
-    //write to text file
-    public static void writeHotelData()
-    {
+     public static void UpdateRoomStatus(int RoomID){
+        //  System.out.println("this is RoomID in WriteHotel " + RoomID);
+        // System.out.println(roomList.get(RoomID-1));
+     //  System.out.println(roomList.get(RoomID - 1) + " -----------before--------------- " + roomList.get(RoomID-1).getRoomStatus());
+        if(roomList.get(RoomID - 1).getRoomStatus() == false) {
+            roomList.get(RoomID - 1).setReservedStatus(true);
+        } else {
+            roomList.get(RoomID - 1 ).setReservedStatus(false);
+        }
+    //   System.out.println(roomList.get(RoomID-1) + " ------------after------------- " + roomList.get(RoomID-1).getRoomStatus());
+        writeHotelData();
+    }
+
+
+    public static void writeHotelData() {
+        String hotelData;
+        try
+        {
+            PrintWriter pw = new PrintWriter(new File("RoomReservationTestDataHotelRooms.txt"));
+            for(int counter = 0; counter < roomList.size(); counter++)
+            {
+                hotelData = roomList.get(counter).toString();
+            //    System.out.println(hotelData);
+                pw.write(hotelData);
+            //  System.out.println("HotelData: " + hotelData);
+            }
+            pw.close();
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Did you forget the input file?");
+            System.exit(1);
+        } //setting up getting input from txt file
     }
     
     //check if there are available rooms left for regular rooms
