@@ -13,13 +13,14 @@ public class SearchWindow extends JFrame {
     JFrame ThisWindow;
     JButton backspace;
     JButton MakeReservationButton;
-    
-        public void makeTable(){
+    public int RoomSelected;
+    public void makeTable(){
         ArrayList testy = HotelRoom.ReturnCollection();
 
         Stream<HotelRoom> spet = testy.stream();
         Spliterator<HotelRoom> sptr = spet.spliterator();
 
+        //make the table
         String Column[] = {"Room","Room Status","Room Type","Number of Beds"};
         DefaultTableModel DataTable = new DefaultTableModel(Column,0);
         sptr.forEachRemaining((n) -> DataTable.addRow(new Object[]{n.getRoomID(), n.getRoomStatus(),n.getRoomType(), n.getNumberOfBeds()}));
@@ -27,15 +28,39 @@ public class SearchWindow extends JFrame {
 
         JTable DeTable = new JTable(DataTable);
 
-        DeTable.setPreferredScrollableViewportSize(new Dimension(30,100000));
+        DeTable.setPreferredScrollableViewportSize(new Dimension(600,900));
         DeTable.setFillsViewportHeight(true);
+        DeTable.setDefaultEditor(Object.class, null);
+
 
         JScrollPane fr = new JScrollPane(DeTable);
 
-        fr.setBounds(300,10,700,10000);
+
+        fr.setBounds(300,10,700,700);
         fr.setVisible(true);
         ThisWindow.add(fr);
+        //
+
+        //selector
+        DeTable.setCellSelectionEnabled(true);
+        DeTable.setRowSelectionAllowed(true);
+        ListSelectionModel userPick = DeTable.getSelectionModel();
+        userPick.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        ListSelectionListener plzwork = new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int selection = DeTable.getSelectedRow();
+                 System.out.println("selected " + (selection + 1));
+                 RoomSelected = selection;
+            }
+        };
+
+        //
+        userPick.addListSelectionListener(plzwork);
+
     }
+
      
   
 
@@ -74,13 +99,18 @@ public class SearchWindow extends JFrame {
                 goBack.createAndShowGUI();
                 ThisWindow.dispose();
             } if(event.getSource() == MakeReservationButton){
-            	
-            	// HotelRoom.loadHotelData();
-            	// Customer.loadCustomerData();
-            	 System.out.println(HotelRoom.numAvailLux());
-            	 System.out.println(HotelRoom.numAvailReg());
-                 ThisWindow.setVisible(false);
-                 makeReservation reservationWindow = new makeReservation();
+            	 if(HotelRoom.ReturnCollection().get(RoomSelected).getRoomStatus() == false){
+                    // Customer.loadCustomerData();
+                    System.out.println("selected room: " + HotelRoom.ReturnCollection().get(RoomSelected));
+                    System.out.println(HotelRoom.numAvailLux());
+                    System.out.println(HotelRoom.numAvailReg());
+                    ThisWindow.setVisible(false);
+                    makeReservation reservationWindow = new makeReservation(RoomSelected); //add parameter for room Selected
+                } else {
+                    JFrame f = new JFrame();
+                    JOptionPane.showMessageDialog(f,"This Room is Not Available");
+                }
+
                  
             }
         }
