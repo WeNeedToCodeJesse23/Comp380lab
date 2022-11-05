@@ -35,15 +35,13 @@ public class makeReservation /*extends JFrame*/ {
     JButton backspace;
     JButton reserve;
     myActionListener listener = new myActionListener();
-    
-    int roomID;
-    boolean roomStatus;
-    String roomType;
-    int numberOfRooms;
+    int RoomSelected;
+	
+	
     ArrayList<HotelRoom> roomList;
 
-    public makeReservation(){
-        reserveWindow = new JFrame();
+     public makeReservation(int RoomSelected){
+        this.RoomSelected = RoomSelected + 1;
         panel = new JPanel();
         backspace = new JButton("Backspace");
         reserve = new JButton("Reserve");
@@ -131,15 +129,19 @@ public class makeReservation /*extends JFrame*/ {
              }
              else if(event.getSource() == reserve)
              {
-            	 String name = nameField.getText();
-            	 String address = addressField.getText();
-            	 String email = emailField.getText();
-            	 String cardNumber = cardNumberField.getText();
-            	 Customer userInfo = new Customer(name, address, email, cardNumber);
-            	 
-            	 System.out.println(userInfo);
-            	 //SearchWindow.loadData();
-            	 
+            	String name = nameField.getText();
+                String address = addressField.getText();
+                String email = emailField.getText();
+                String cardNumber = cardNumberField.getText();
+                Customer userInfo = new Customer(name, address, email, cardNumber);
+
+                userInfo.setRoomID(RoomSelected);
+               // System.out.println("this is Given ID " + userInfo.getRoomID());
+                //System.out.println("RoomSelected = " + RoomSelected);
+                HotelRoom.UpdateRoomStatus(RoomSelected);
+                System.out.println(userInfo);
+
+                //SearchWindow.loadData();
             	 /*System.out.println("Reserved!\n"
             	 		+ "Provided Info:\n"
             	 		+ "Name: " + name + "\n"
