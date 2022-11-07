@@ -122,10 +122,11 @@ public class makeReservation /*extends JFrame*/ {
         public void actionPerformed(ActionEvent event) {
              if (event.getSource() == backspace) {
                 reserveWindow.setVisible(false);
-                SearchWindow searchWin = new SearchWindow();  
+              
                 reserveWindow.dispose();
-                HotelRoom.clearRoomList();
-                Customer.clearCustomerList();
+              //  HotelRoom.clearRoomList();
+              //  Customer.clearCustomerList();
+                  SearchWindow searchWin = new SearchWindow(); 
              }
              else if(event.getSource() == reserve)
              {
