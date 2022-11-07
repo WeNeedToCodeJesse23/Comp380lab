@@ -81,7 +81,7 @@ public class HotelRoom {
 	    
       try
 	    {
-	       txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms.txt"));
+	       txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms(test).txt")); //RoomReservationTestDataHotelRooms.txt
 	       txtInput.useDelimiter(",");
 	    }
 	    catch(FileNotFoundException e)

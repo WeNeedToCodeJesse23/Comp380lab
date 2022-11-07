@@ -120,7 +120,7 @@ public class Customer {
         Scanner txtInput = null;
         try
 	    {
-	       txtInput = new Scanner(new File("CurrentCustomers.txt"));
+	       txtInput = new Scanner(new File("CurrentCustomers(test).txt"));
 	       txtInput.useDelimiter(",");
 	    }
 	    catch(FileNotFoundException e)
