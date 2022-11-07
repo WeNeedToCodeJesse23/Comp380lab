@@ -8,8 +8,8 @@
 public class Main{
 	
     public static void main(String[] args) {              //has a connection to sql database //loads data when launch
-	HotelRoom.loadHotelData();
-       // Customer.loadCustomerData();
+    	HotelRoom.loadHotelData();
+       	Customer.loadCustomerData();
         GUI test = new GUI();
         test.createAndShowGUI();
     }

@@ -1,14 +1,15 @@
 //package com.company;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
+//import java.io.File;
+//import java.io.FileNotFoundException;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
-import java.util.*;
+//import java.util.*;
 
 public class GUI extends JFrame {
     //frame setup
+	private static final long serialVersionUID = 1L;
     JFrame main;
     JFrame hotelLogin;
     //button setup

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -49,8 +50,8 @@ public class HotelRoom {
 	
 	@Override
 	public String toString(){
-		String roomFormat = "Room: " + hotelRoomID +  "\tReserved: " + reservedStatus + "\tRoomType: " + roomType + "\tNumber Of Beds: " + numberOfBeds;
-		return roomFormat;
+		String roomFormat = hotelRoomID + "," + reservedStatus + "," + roomType + "," + numberOfBeds + "\n";
+        return roomFormat;
 	}
 	
 	public ArrayList<HotelRoom> getCurrentRoomList()
@@ -120,7 +121,7 @@ public class HotelRoom {
             roomList.get(RoomID - 1 ).setReservedStatus(false);
         }
     //   System.out.println(roomList.get(RoomID-1) + " ------------after------------- " + roomList.get(RoomID-1).getRoomStatus());
-        writeHotelData();
+        //writeHotelData();
     }
 
 
@@ -128,7 +129,7 @@ public class HotelRoom {
         String hotelData;
         try
         {
-            PrintWriter pw = new PrintWriter(new File("RoomReservationTestDataHotelRooms.txt"));
+            PrintWriter pw = new PrintWriter(new File("RoomReservationTestDataHotelRooms(test).txt"));
             for(int counter = 0; counter < roomList.size(); counter++)
             {
                 hotelData = roomList.get(counter).toString();

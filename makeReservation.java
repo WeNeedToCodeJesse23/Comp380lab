@@ -1,13 +1,13 @@
 //package com.company;
-import java.awt.*;
+//import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
+//import java.io.File;
+//import java.io.FileNotFoundException;
+//import java.util.ArrayList;
+//import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionListener;
 
 
 //import java.awt.event.ActionListener;
@@ -35,13 +35,14 @@ public class makeReservation /*extends JFrame*/ {
     JButton backspace;
     JButton reserve;
     myActionListener listener = new myActionListener();
-    int RoomSelected;
+    int RoomSelected = 0;
 	
 	
-    ArrayList<HotelRoom> roomList;
+    //ArrayList<HotelRoom> roomList;
 
      public makeReservation(int RoomSelected){
         this.RoomSelected = RoomSelected + 1;
+        reserveWindow = new JFrame();
         panel = new JPanel();
         backspace = new JButton("Backspace");
         reserve = new JButton("Reserve");
@@ -82,7 +83,6 @@ public class makeReservation /*extends JFrame*/ {
         panel.add(emailField);
         panel.add(addressField);
         panel.add(cardNumberField);
-        
         
         reserveWindow.setVisible(true);
         
@@ -138,9 +138,14 @@ public class makeReservation /*extends JFrame*/ {
                 userInfo.setRoomID(RoomSelected);
                // System.out.println("this is Given ID " + userInfo.getRoomID());
                 //System.out.println("RoomSelected = " + RoomSelected);
+                Customer.addToList(userInfo);
                 HotelRoom.UpdateRoomStatus(RoomSelected);
-                System.out.println(userInfo);
-
+                Customer.writeCustomerData();
+                HotelRoom.writeHotelData();
+                
+                ConfirmationWindow confirm = new ConfirmationWindow(userInfo);
+                //System.out.println(userInfo);
+                
                 //SearchWindow.loadData();
             	 /*System.out.println("Reserved!\n"
             	 		+ "Provided Info:\n"

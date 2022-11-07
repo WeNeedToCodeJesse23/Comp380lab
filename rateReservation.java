@@ -1,9 +1,9 @@
-import java.awt.*;
+//import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
+//import java.io.File;
+//import java.io.FileNotFoundException;
+//import java.util.ArrayList;
+//import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 
@@ -12,6 +12,7 @@ public class rateReservation extends JFrame{
     JFrame test;
     JButton backspace;
     
+    private static final long serialVersionUID = 1L;
     private String name;
     private int confirmationNum;
 

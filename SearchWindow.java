@@ -1,21 +1,27 @@
 //package com.company;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
+//import java.io.File;
+//import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
+//import java.util.Scanner;
+import java.util.Spliterator;
+import java.util.stream.Stream;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 //import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableModel;
 
 public class SearchWindow extends JFrame {
+	private static final long serialVersionUID = 1L;
     JFrame ThisWindow;
     JButton backspace;
     JButton MakeReservationButton;
     public int RoomSelected;
     public void makeTable(){
-        ArrayList testy = HotelRoom.ReturnCollection();
+        ArrayList<HotelRoom> testy = HotelRoom.ReturnCollection();
 
         Stream<HotelRoom> spet = testy.stream();
         Spliterator<HotelRoom> sptr = spet.spliterator();
@@ -105,8 +111,10 @@ public class SearchWindow extends JFrame {
                     System.out.println(HotelRoom.numAvailLux());
                     System.out.println(HotelRoom.numAvailReg());
                     ThisWindow.setVisible(false);
-                    makeReservation reservationWindow = new makeReservation(RoomSelected); //add parameter for room Selected
-                } else {
+                    makeReservation reservationWindow = new makeReservation(RoomSelected);//add parameter for room Selected
+                    ThisWindow.dispose();
+                    
+            	 } else {
                     JFrame f = new JFrame();
                     JOptionPane.showMessageDialog(f,"This Room is Not Available");
                 }

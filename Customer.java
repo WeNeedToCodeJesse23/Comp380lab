@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -145,10 +146,41 @@ public class Customer {
       //return roomList; 
     }
 	
+	public static void addToList(Customer userInfo)
+	{
+		customerList.add(userInfo);
+	}
+	
+	public static void deleteFromList(Customer userInfo)
+	{
+		customerList.remove(userInfo);
+	}
+	
+    public static void writeCustomerData() {
+        String customerData;
+        try
+        {
+            PrintWriter pw = new PrintWriter(new File("CurrentCustomers(test).txt"));
+            for(int counter = 0; counter < customerList.size(); counter++)
+            {
+                customerData = customerList.get(counter).toString();
+            //    System.out.println(hotelData);
+                pw.write(customerData);
+            //  System.out.println("HotelData: " + hotelData);
+            }
+            pw.close();
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Did you forget the input file?");
+            System.exit(1);
+        } //setting up getting input from txt file
+    }
+	
 	@Override
 	public String toString(){
-		String roomFormat = "Name: " + name +  "\tEmail: " + email + "\tAddress: " + address + "\tCard Number: " + cardNumber + "\tCustomer ID: " + custID + "\tRoomID: " + roomID;
-		return roomFormat;
+		String customerFormat =  name +  "," + email + "," + address + "," + cardNumber + "," + custID + "," + roomID + "\n";
+        return customerFormat;
 	} 
 
 }
