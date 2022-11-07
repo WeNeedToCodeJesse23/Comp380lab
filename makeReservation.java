@@ -42,6 +42,7 @@ public class makeReservation /*extends JFrame*/ {
 
      public makeReservation(int RoomSelected){
         this.RoomSelected = RoomSelected + 1;
+        reserveWindow = new JFrame();
         panel = new JPanel();
         backspace = new JButton("Backspace");
         reserve = new JButton("Reserve");
