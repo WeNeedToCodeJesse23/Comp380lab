@@ -27,7 +27,7 @@ public class GUI extends JFrame {
     JPasswordField password;
     boolean locked;
     int visited;         //visited will record the windows visited through integers, to make the conditional statements easier
-
+    int CustomerKey;
 
     GUI(){
 
@@ -82,25 +82,28 @@ public class GUI extends JFrame {
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    //WindowNotYetMade
-    public void RateWindow(){
+     //WindowNotYetMade
+    public void RateWindow(int key){
         visited = 1;
+        CustomerKey = key;
         if(locked){
             LoginWindow();
         } else {
-            System.out.println("this button functions");
-            main.setVisible(false);
+            System.out.println("this button functions" + CustomerKey);
+            main.dispose();
         }
     }
 
     //add in this window
-    public void CancelWindow(){
+    public void CancelWindow(int key){
         visited = 2;
+        CustomerKey = key;
         if(locked){
             LoginWindow();
         } else {
-            CancelReservationWindow DoThis = new CancelReservationWindow();
-            main.setVisible(false);
+            System.out.println("this button functions" + CustomerKey);
+            CancelReservationWindow goTo = new CancelReservationWindow(CustomerKey);
+            main.dispose();
         }
     }
 
@@ -110,16 +113,18 @@ public class GUI extends JFrame {
         main.setVisible(false);
     }
 
-    //Window Not Yet Made
-    public void ChangeWindow(){
+   //Window Not Yet Made
+    public void ChangeWindow(int key){
         visited = 3;
+        CustomerKey = key;
         if(locked){
             LoginWindow();
         } else {
-            System.out.println("this button functions");
-            main.setVisible(false);
+            System.out.println("this button functions" + CustomerKey);
+            main.dispose();
         }
     }
+
 
     //This is the Login window
     public void LoginWindow(){
@@ -156,11 +161,11 @@ public class GUI extends JFrame {
             } else if (event.getSource() == ReturnMenu){
                 ReturnToMenuCases(event);
             } else if (event.getSource() == Cancel){
-                CancelWindow();
+                CancelWindow(0);
             } else if (event.getSource() == Rate){
-                RateWindow();
+                RateWindow(0);
             } else if (event.getSource() == Change) {
-                ChangeWindow();
+                ChangeWindow(0);
             } else if(event.getSource() == Login){
                 LoginPassword(event);
             }
@@ -180,18 +185,21 @@ public class GUI extends JFrame {
         public void LoginPassword (ActionEvent event){
             String UserTextInput = userText.getText();
             String passwordInput = password.getText();
-            if(UserTextInput.equals("guest") && passwordInput.equals("pass1")){
-                hotelLogin.setVisible(false);
+            // System.out.println(Customer.CheckPass("Sam","10"));
+            int results = Customer.CheckPass(UserTextInput,passwordInput);
+            if(results > 0){
+                System.out.println(true);
+                hotelLogin.dispose();
                 locked = false;
                 switch(visited){
                     case 1:
-                        RateWindow();
+                        RateWindow(results); //
                         break;
                     case 2:
-                        CancelWindow();
+                        CancelWindow(results);
                         break;
                     case 3:
-                        ChangeWindow();
+                        ChangeWindow(results);
                         break;
                 }
             }
