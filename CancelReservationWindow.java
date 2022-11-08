@@ -25,10 +25,12 @@ public class CancelReservationWindow {
 	JTextField rumIDfld;
     
 	myActionListener listener = new myActionListener();
+	int CustomerKey;
 
 	
-	public CancelReservationWindow()
+	public CancelReservationWindow(int key)
 	{
+		CustomerKey = key;
 		cancelFrame = new JFrame("Cancel Reservation");
 		panel = new JPanel();
 	    cancel =  new JButton("Cancel");
