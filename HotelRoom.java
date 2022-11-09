@@ -81,7 +81,7 @@ public class HotelRoom {
 	    
       try
 	    {
-	       txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms(test).txt")); //RoomReservationTestDataHotelRooms.txt
+	       txtInput = new Scanner(new File("RoomReservationTestDataHotelRooms.txt")); //RoomReservationTestDataHotelRooms.txt
 	       txtInput.useDelimiter(",");
 	    }
 	    catch(FileNotFoundException e)
@@ -129,7 +129,7 @@ public class HotelRoom {
         String hotelData;
         try
         {
-            PrintWriter pw = new PrintWriter(new File("RoomReservationTestDataHotelRooms(test).txt"));
+            PrintWriter pw = new PrintWriter(new File("RoomReservationTestDataHotelRooms.txt"));
             for(int counter = 0; counter < roomList.size(); counter++)
             {
                 hotelData = roomList.get(counter).toString();
@@ -173,5 +173,19 @@ public class HotelRoom {
       }
       return lux;
     }
+    public static void openRum(String id)
+    {
+    	int rumID = Integer.parseInt(id)-1;
+    	System.out.println(roomList.get(rumID).toString());
+    	roomList.get(rumID).setReservedStatus(false);
+    	System.out.println(roomList.get(rumID).toString());
+    	writeHotelData();
+    	
+    
+
+    
+    }
+      
+    
     
 }

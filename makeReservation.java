@@ -143,7 +143,7 @@ public class makeReservation /*extends JFrame*/ {
                 HotelRoom.UpdateRoomStatus(RoomSelected);
                 Customer.writeCustomerData();
                 HotelRoom.writeHotelData();
-                
+                reserveWindow.dispose();
                 ConfirmationWindow confirm = new ConfirmationWindow(userInfo);
                 //System.out.println(userInfo);
                 

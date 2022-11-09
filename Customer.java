@@ -130,7 +130,7 @@ public class Customer {
         Scanner txtInput = null;
         try
 	    {
-	       txtInput = new Scanner(new File("CurrentCustomers(test).txt"));
+	       txtInput = new Scanner(new File("CurrentCustomers.txt"));
 	       txtInput.useDelimiter(",");
 	    }
 	    catch(FileNotFoundException e)
@@ -170,7 +170,7 @@ public class Customer {
         String customerData;
         try
         {
-            PrintWriter pw = new PrintWriter(new File("CurrentCustomers(test).txt"));
+            PrintWriter pw = new PrintWriter(new File("CurrentCustomers.txt"));
             for(int counter = 0; counter < customerList.size(); counter++)
             {
                 customerData = customerList.get(counter).toString();
@@ -191,6 +191,19 @@ public class Customer {
 	public String toString(){
 		String customerFormat =  name +  "," + email + "," + address + "," + cardNumber + "," + custID + "," + roomID + "\n";
         return customerFormat;
-	} 
+	}
+	public static void delCUS(String id){
+		System.out.println(id);
+		int i;
+		for(i = 0 ; i<customerList.size();i++) {
+			if(String.valueOf(customerList.get(i).getCustID()).equals(id)) {
+				System.out.println(customerList.get(i).toString());
+				customerList.remove(i);
+				writeCustomerData();
+				
+			}
+			
+		}
+	}
 
 }

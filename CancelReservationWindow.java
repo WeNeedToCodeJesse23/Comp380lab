@@ -33,8 +33,8 @@ public class CancelReservationWindow {
 		CustomerKey = key;
 		cancelFrame = new JFrame("Cancel Reservation");
 		panel = new JPanel();
-	    cancel =  new JButton("Cancel");
-		backspace = new JButton("Backspace");
+	    cancel =  new JButton("Confirm Cancel");
+		backspace = new JButton("Main Menu");
 		cancel.setBounds(375,200,150, 40);
 		backspace.setBounds(175,200,150, 40);
 		 
@@ -84,7 +84,14 @@ public class CancelReservationWindow {
              }
              else if(event.getSource() == cancel)
              {
+            	 
             	 System.out.println("here");
+            	 Customer.delCUS(custIDfld.getText());
+            	 HotelRoom.openRum(rumIDfld.getText());
+            	 JOptionPane.showMessageDialog(null, "Reservation Canceled");
+            	 cancelFrame.dispose();
+                 GUI goBack = new GUI();
+                 goBack.createAndShowGUI();
       
              }
         }
