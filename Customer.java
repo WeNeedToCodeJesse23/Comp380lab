@@ -205,5 +205,14 @@ public class Customer {
 			
 		}
 	}
+	
+	public static void ChangeRoom(int location, int newRoom){
+       // System.out.println("CHECK THIS RN: " + customerList.get(location).getRoomID() + " AND " + customerList.get(location).getName());
+       // System.out.println("New Room = " + newRoom);
+        customerList.get(location).setRoomID(newRoom);
+       //System.out.println("CHECK THIS RN: " + customerList.get(location).getRoomID() + " AND " + customerList.get(location).getName());
 
+       writeCustomerData();
+    }
+	
 }
