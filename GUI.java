@@ -121,6 +121,7 @@ public class GUI extends JFrame {
             LoginWindow();
         } else {
             System.out.println("this button functions" + CustomerKey);
+            ChangeRoom proces = new ChangeRoom(CustomerKey);
             main.dispose();
         }
     }
