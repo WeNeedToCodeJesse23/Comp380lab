@@ -109,15 +109,17 @@ public class GUI extends JFrame {
         SearchWindow tryThis = new SearchWindow();
         main.setVisible(false);
     }
-
-    //Window Not Yet Made
-    public void ChangeWindow(){
+	
+   //Window Not Yet Made
+    public void ChangeWindow(int key){
         visited = 3;
+        CustomerKey = key;
         if(locked){
             LoginWindow();
         } else {
-            System.out.println("this button functions");
-            main.setVisible(false);
+            System.out.println("this button functions" + CustomerKey);
+            ChangeRoom proces = new ChangeRoom(CustomerKey);
+            main.dispose();
         }
     }
 
