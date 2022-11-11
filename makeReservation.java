@@ -122,10 +122,11 @@ public class makeReservation /*extends JFrame*/ {
         public void actionPerformed(ActionEvent event) {
              if (event.getSource() == backspace) {
                 reserveWindow.setVisible(false);
-                SearchWindow searchWin = new SearchWindow();  
+              
                 reserveWindow.dispose();
-                HotelRoom.clearRoomList();
-                Customer.clearCustomerList();
+              //  HotelRoom.clearRoomList();
+              //  Customer.clearCustomerList();
+                  SearchWindow searchWin = new SearchWindow(); 
              }
              else if(event.getSource() == reserve)
              {
@@ -138,12 +139,11 @@ public class makeReservation /*extends JFrame*/ {
                 userInfo.setRoomID(RoomSelected);
                // System.out.println("this is Given ID " + userInfo.getRoomID());
                 //System.out.println("RoomSelected = " + RoomSelected);
-                Customer.addToList(userInfo);
-                HotelRoom.UpdateRoomStatus(RoomSelected);
-                Customer.writeCustomerData();
-                HotelRoom.writeHotelData();
+                ReviewReservationWindow review = new ReviewReservationWindow(userInfo);
+                reserveWindow.setVisible(false);
+                reserveWindow.dispose();
+                //ConfirmationWindow confirm = new ConfirmationWindow(userInfo);
                 
-                ConfirmationWindow confirm = new ConfirmationWindow(userInfo);
                 //System.out.println(userInfo);
                 
                 //SearchWindow.loadData();

@@ -1,4 +1,4 @@
-package com.company;
+//package com.company;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -17,6 +17,8 @@ public class ChangeRoom {
     JButton ChangeReservation;
     public int RoomSelected;
     public int currentLocation;
+    
+    //public ArrayList<HotelRoom> hotelRoomImport = new ArrayList<HotelRoom>();// arraylist used to fix static error on line 114
 
 
     public void makeTable(){
@@ -109,9 +111,8 @@ public class ChangeRoom {
                 if(!HotelRoom.ReturnCollection().get(RoomSelected).getRoomStatus()){
 
                     HotelRoom.UpdateRoomStatus(RoomSelected + 1);
-                       System.out.println(RoomSelected + 1);
-                    HotelRoom.UpdateRoomStatus(Customer.getCurrentCustomerList().get(currentLocation).getRoomID());
-                       System.out.println(Customer.getCurrentCustomerList().get(currentLocation).getRoomID());
+                    
+                    HotelRoom.UpdateRoomStatus(Customer.getCurrentCustomerList().get(currentLocation).getRoomID()); 
                     Customer.ChangeRoom(currentLocation,RoomSelected + 1);
 
                    // System.out.println("selected room: " + HotelRoom.ReturnCollection().get(RoomSelected).getRoomID());
@@ -132,4 +133,3 @@ public class ChangeRoom {
     }
 
 }
-
