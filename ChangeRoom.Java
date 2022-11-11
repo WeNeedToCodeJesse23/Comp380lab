@@ -1,4 +1,4 @@
-//package com.company;
+package com.company;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -109,7 +109,9 @@ public class ChangeRoom {
                 if(!HotelRoom.ReturnCollection().get(RoomSelected).getRoomStatus()){
 
                     HotelRoom.UpdateRoomStatus(RoomSelected + 1);
+                       System.out.println(RoomSelected + 1);
                     HotelRoom.UpdateRoomStatus(Customer.getCurrentCustomerList().get(currentLocation).getRoomID());
+                       System.out.println(Customer.getCurrentCustomerList().get(currentLocation).getRoomID());
                     Customer.ChangeRoom(currentLocation,RoomSelected + 1);
 
                    // System.out.println("selected room: " + HotelRoom.ReturnCollection().get(RoomSelected).getRoomID());
@@ -130,3 +132,4 @@ public class ChangeRoom {
     }
 
 }
+
