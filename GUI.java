@@ -27,7 +27,7 @@ public class GUI extends JFrame {
     JPasswordField password;
     boolean locked;
     int visited;         //visited will record the windows visited through integers, to make the conditional statements easier
-    int CustomerKey;
+
 
     GUI(){
 
@@ -82,28 +82,25 @@ public class GUI extends JFrame {
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-     //WindowNotYetMade
-    public void RateWindow(int key){
+    //WindowNotYetMade
+    public void RateWindow(){
         visited = 1;
-        CustomerKey = key;
         if(locked){
             LoginWindow();
         } else {
-            System.out.println("this button functions" + CustomerKey);
-            main.dispose();
+            System.out.println("this button functions");
+            main.setVisible(false);
         }
     }
 
     //add in this window
-    public void CancelWindow(int key){
+    public void CancelWindow(){
         visited = 2;
-        CustomerKey = key;
         if(locked){
             LoginWindow();
         } else {
-            System.out.println("this button functions" + CustomerKey);
-            CancelReservationWindow goTo = new CancelReservationWindow(CustomerKey);
-            main.dispose();
+            CancelReservationWindow DoThis = new CancelReservationWindow();
+            main.setVisible(false);
         }
     }
 
@@ -113,19 +110,16 @@ public class GUI extends JFrame {
         main.setVisible(false);
     }
 
-   //Window Not Yet Made
-    public void ChangeWindow(int key){
+    //Window Not Yet Made
+    public void ChangeWindow(){
         visited = 3;
-        CustomerKey = key;
         if(locked){
             LoginWindow();
         } else {
-            System.out.println("this button functions" + CustomerKey);
-            ChangeRoom proces = new ChangeRoom(CustomerKey);
-            main.dispose();
+            System.out.println("this button functions");
+            main.setVisible(false);
         }
     }
-
 
     //This is the Login window
     public void LoginWindow(){
@@ -162,11 +156,11 @@ public class GUI extends JFrame {
             } else if (event.getSource() == ReturnMenu){
                 ReturnToMenuCases(event);
             } else if (event.getSource() == Cancel){
-                CancelWindow(0);
+                CancelWindow();
             } else if (event.getSource() == Rate){
-                RateWindow(0);
+                RateWindow();
             } else if (event.getSource() == Change) {
-                ChangeWindow(0);
+                ChangeWindow();
             } else if(event.getSource() == Login){
                 LoginPassword(event);
             }
@@ -186,21 +180,18 @@ public class GUI extends JFrame {
         public void LoginPassword (ActionEvent event){
             String UserTextInput = userText.getText();
             String passwordInput = password.getText();
-            // System.out.println(Customer.CheckPass("Sam","10"));
-            int results = Customer.CheckPass(UserTextInput,passwordInput);
-            if(results > 0){
-                System.out.println(true);
-                hotelLogin.dispose();
+            if(UserTextInput.equals("guest") && passwordInput.equals("pass1")){
+                hotelLogin.setVisible(false);
                 locked = false;
                 switch(visited){
                     case 1:
-                        RateWindow(results); //
+                        RateWindow();
                         break;
                     case 2:
-                        CancelWindow(results);
+                        CancelWindow();
                         break;
                     case 3:
-                        ChangeWindow(results);
+                        ChangeWindow();
                         break;
                 }
             }

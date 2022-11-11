@@ -122,11 +122,10 @@ public class makeReservation /*extends JFrame*/ {
         public void actionPerformed(ActionEvent event) {
              if (event.getSource() == backspace) {
                 reserveWindow.setVisible(false);
-              
+                SearchWindow searchWin = new SearchWindow();  
                 reserveWindow.dispose();
-              //  HotelRoom.clearRoomList();
-              //  Customer.clearCustomerList();
-                  SearchWindow searchWin = new SearchWindow(); 
+                HotelRoom.clearRoomList();
+                Customer.clearCustomerList();
              }
              else if(event.getSource() == reserve)
              {
@@ -143,7 +142,7 @@ public class makeReservation /*extends JFrame*/ {
                 HotelRoom.UpdateRoomStatus(RoomSelected);
                 Customer.writeCustomerData();
                 HotelRoom.writeHotelData();
-                reserveWindow.dispose();
+                
                 ConfirmationWindow confirm = new ConfirmationWindow(userInfo);
                 //System.out.println(userInfo);
                 

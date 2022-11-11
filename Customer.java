@@ -14,7 +14,6 @@ public class Customer {
 	private int custID;  //login password
 	private int roomID;
 	private static ArrayList<Customer> customerList = new ArrayList<Customer>();
-	private String pass; //idk if we'll be needing this because the login password will be customerID
 	
 	public Customer(String name, String address, String email, String cardNumber)
 	{
@@ -40,8 +39,6 @@ public class Customer {
 				this.roomID = 1 + (int)(Math.random() * ((80 - 1) + 1));
 			}
 		}
-		       
-	        pass = String.valueOf(custID);
 		
 	}
 	
@@ -61,15 +58,8 @@ public class Customer {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	private String pass; //idk if we'll be needing this because the login password will be customerID
 	
-	public static int CheckPass(String Name, String pw){
-        for(int i = 0; i< customerList.size(); i++){
-            if((customerList.get(i).getName().equals(Name)) && String.valueOf(customerList.get(i).getCustID()).equals(pw)) {
-                return i;
-            }
-        }
-        return -1;
-       }
 	
 	public int getRoomID() {
 		return roomID;
@@ -170,7 +160,7 @@ public class Customer {
         String customerData;
         try
         {
-            PrintWriter pw = new PrintWriter(new File("CurrentCustomers.txt"));
+            PrintWriter pw = new PrintWriter(new File("CurrentCustomers(test).txt"));
             for(int counter = 0; counter < customerList.size(); counter++)
             {
                 customerData = customerList.get(counter).toString();
@@ -191,28 +181,6 @@ public class Customer {
 	public String toString(){
 		String customerFormat =  name +  "," + email + "," + address + "," + cardNumber + "," + custID + "," + roomID + "\n";
         return customerFormat;
-	}
-	public static void delCUS(String id){
-		System.out.println(id);
-		int i;
-		for(i = 0 ; i<customerList.size();i++) {
-			if(String.valueOf(customerList.get(i).getCustID()).equals(id)) {
-				System.out.println(customerList.get(i).toString());
-				customerList.remove(i);
-				writeCustomerData();
-				
-			}
-			
-		}
-	}
-	
-	public static void ChangeRoom(int location, int newRoom){
-       // System.out.println("CHECK THIS RN: " + customerList.get(location).getRoomID() + " AND " + customerList.get(location).getName());
-       // System.out.println("New Room = " + newRoom);
-        customerList.get(location).setRoomID(newRoom);
-       //System.out.println("CHECK THIS RN: " + customerList.get(location).getRoomID() + " AND " + customerList.get(location).getName());
+	} 
 
-       writeCustomerData();
-    }
-	
 }
