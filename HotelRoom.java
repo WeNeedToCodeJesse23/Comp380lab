@@ -121,7 +121,7 @@ public class HotelRoom {
             roomList.get(RoomID - 1 ).setReservedStatus(false);
         }
        System.out.println(roomList.get(RoomID-1) + " ------------after------------- " + roomList.get(RoomID-1).getRoomStatus());
-        //writeHotelData();
+        writeHotelData();
     }
 
 
