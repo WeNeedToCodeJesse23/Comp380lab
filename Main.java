@@ -10,6 +10,7 @@ public class Main{
     public static void main(String[] args) {              //has a connection to sql database //loads data when launch
     	HotelRoom.loadHotelData();
        	Customer.loadCustomerData();
+       	manager.loadManagerData();
         GUI test = new GUI();
         test.createAndShowGUI();
     }

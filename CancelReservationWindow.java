@@ -84,7 +84,8 @@ public class CancelReservationWindow {
              }
              else if(event.getSource() == cancel)
              {
-            	 
+            	 manager.getCancelledList().add(Customer.getCurrentCustomerList().get(CustomerKey));
+            	 manager.writeCancelledList();
             	 System.out.println("here");
             	 Customer.delCUS(custIDfld.getText());
             	 HotelRoom.openRum(rumIDfld.getText());

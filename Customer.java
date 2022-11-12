@@ -14,6 +14,7 @@ public class Customer {
 	private int custID;  //login password
 	private int roomID;
 	private static ArrayList<Customer> customerList = new ArrayList<Customer>();
+	
 	private String pass; //idk if we'll be needing this because the login password will be customerID
 	
 	public Customer(String name, String address, String email, String cardNumber)

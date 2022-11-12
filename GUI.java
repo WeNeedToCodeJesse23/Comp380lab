@@ -19,6 +19,7 @@ public class GUI extends JFrame {
     JButton Change;
     JButton Login;
     JButton ReturnMenu;
+    JButton Generate;
 
     //components need for password
     JLabel userLb;
@@ -49,6 +50,7 @@ public class GUI extends JFrame {
         Change = new JButton("Change Room");
         Login = new JButton("Login");
         ReturnMenu = new JButton("Backspace");
+        Generate = new JButton("Generate");
 
 
         Make.setBounds(50,25,150, 40);
@@ -58,11 +60,13 @@ public class GUI extends JFrame {
         Change.setBounds(500,25,150, 40);
         Login.setBounds(10,80,80, 25);
         ReturnMenu.setBounds(400,400,100,50);
+        Generate.setBounds(50,75,150, 40);
 
         main.add(Make);
         main.add(Cancel);
         main.add(Rate);
         main.add(Change);
+        main.add(Generate);
 
         main.setLayout(new FlowLayout());
         hotelLogin.setLayout(null);
@@ -79,6 +83,7 @@ public class GUI extends JFrame {
         Change.addActionListener(e);
         ReturnMenu.addActionListener(e);
         Login.addActionListener(e);
+        Generate.addActionListener(e);
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -151,7 +156,18 @@ public class GUI extends JFrame {
         hotelLogin.setVisible(true);
         hotelLogin.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-
+    
+    public void genWindow(int key){
+        visited = 4;
+        CustomerKey = key;
+        if(locked){
+            LoginWindow();
+        } else {
+            System.out.println("this button functions" + CustomerKey);
+            GenReportWindow genWindow = new GenReportWindow(key);
+            main.dispose();
+        }
+    }
 
     private class myActionListener implements ActionListener {
 
@@ -169,6 +185,10 @@ public class GUI extends JFrame {
                 ChangeWindow(0);
             } else if(event.getSource() == Login){
                 LoginPassword(event);
+            }
+            else if(event.getSource() == Generate)
+            {
+            	genWindow(0);
             }
         }
 
@@ -188,13 +208,15 @@ public class GUI extends JFrame {
             String passwordInput = password.getText();
             // System.out.println(Customer.CheckPass("Sam","10"));
             int results = Customer.CheckPass(UserTextInput,passwordInput);
-            if(results > 0){
+            int managerLogin = manager.CheckPass(UserTextInput,passwordInput);
+            System.out.println(managerLogin);
+            if((results >= 0) || (managerLogin >= 0)){
                 System.out.println(true);
                 hotelLogin.dispose();
                 locked = false;
                 switch(visited){
                     case 1:
-                        RateWindow(results); //
+                        RateWindow(results); 
                         break;
                     case 2:
                         CancelWindow(results);
@@ -202,9 +224,14 @@ public class GUI extends JFrame {
                     case 3:
                         ChangeWindow(results);
                         break;
+                    case 4:
+                    	genWindow(managerLogin);
+                    	break;
+                    	
                 }
             }
 
         }
+        
     }
 }

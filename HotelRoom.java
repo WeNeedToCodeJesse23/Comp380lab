@@ -54,7 +54,7 @@ public class HotelRoom {
         return roomFormat;
 	}
 	
-	public ArrayList<HotelRoom> getCurrentRoomList()
+	public static ArrayList<HotelRoom> getCurrentRoomList()
 	{
 		return roomList;
 	}
