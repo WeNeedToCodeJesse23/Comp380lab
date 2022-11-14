@@ -51,8 +51,9 @@ public class GUI extends JFrame {
         Login = new JButton("Login");
         ReturnMenu = new JButton("Backspace");
         Generate = new JButton("Generate");
-
-
+	    
+	reserveWindow.getContentPane().setBackground(Color.darkGray);
+	    
         Make.setBounds(50,25,150, 40);
         // View.setBounds(200,25,150, 40);
         Cancel.setBounds(350,25,150, 40);
