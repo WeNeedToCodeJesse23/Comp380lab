@@ -52,7 +52,6 @@ public class GUI extends JFrame {
         ReturnMenu = new JButton("Backspace");
         Generate = new JButton("Generate");
 	    
-	reserveWindow.getContentPane().setBackground(Color.darkGray);
 	    
         Make.setBounds(50,25,150, 40);
         // View.setBounds(200,25,150, 40);
@@ -68,6 +67,9 @@ public class GUI extends JFrame {
         main.add(Rate);
         main.add(Change);
         main.add(Generate);
+	    
+	main.getContentPane().setBackground(Color.darkGray);
+
 
         main.setLayout(new FlowLayout());
         hotelLogin.setLayout(null);
