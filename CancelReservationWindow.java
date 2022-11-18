@@ -2,6 +2,12 @@ import javax.swing.*;
 
 //import java.awt.*;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.Date;
 //import java.io.File;
 //import java.io.FileNotFoundException;
 //import java.util.ArrayList;
@@ -86,10 +92,29 @@ public class CancelReservationWindow {
              {
             	 manager.getCancelledList().add(Customer.getCurrentCustomerList().get(CustomerKey));
             	 manager.writeCancelledList();
-            	 System.out.println("here");
-            	 Customer.delCUS(custIDfld.getText());
-            	 HotelRoom.openRum(rumIDfld.getText());
-            	 JOptionPane.showMessageDialog(null, "Reservation Canceled");
+            	// String sDate1=Customer.Checkout(custIDfld.getText()); 
+            	 LocalDate before = LocalDate.parse(Customer.Checkout(custIDfld.getText()));
+            	 LocalDate now = LocalDate.now();
+            	 long nod = ChronoUnit.DAYS.between(before, now);
+				 System.out.println(nod);
+   
+				 String roomtype = HotelRoom.getCurrentRoomList().get(Integer.parseInt(rumIDfld.getText())-1).getRoomType();
+				 System.out.println(roomtype);
+//            	 Customer.delCUS(custIDfld.getText());
+//            	 HotelRoom.openRum(rumIDfld.getText());
+				 String emaddy = Customer.findEmail(custIDfld.getText());
+				 Integer noddy = (int) (long) nod;
+				 int tot;
+				 if(roomtype.equals("Regular")) {
+					 tot = noddy*50;
+				 }
+				 else {
+					 tot = noddy*90;
+				 }
+            	 
+				 JOptionPane.showMessageDialog(null, "Payment processed\n"+"Your total for a "+roomtype+" room will be: $"+tot
+						 +"\nNumber of days Stayed: "+nod+"\n Reciept sent to: "+emaddy);
+            	
             	 cancelFrame.dispose();
                  GUI goBack = new GUI();
                  goBack.createAndShowGUI();
@@ -101,46 +126,5 @@ public class CancelReservationWindow {
 	
 	
 }
-/*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*/
-
 
 

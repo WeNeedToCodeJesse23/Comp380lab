@@ -1,9 +1,15 @@
 import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
+
 
 public class Customer {
 	
@@ -17,6 +23,8 @@ public class Customer {
 	
 	private String pass; //idk if we'll be needing this because the login password will be customerID
 	
+	private String checkin;
+
 	public Customer(String name, String address, String email, String cardNumber)
 	{
 		this.name = name;
@@ -26,6 +34,8 @@ public class Customer {
 		this.custID = 1;
 		this.roomID = 1;
 		//for loop to make sure no repeated customerIDs
+		
+		checkin = LocalDate.now().toString();
 		for(int counter = 0; counter < customerList.size(); counter++)
 		{
 			if(custID == customerList.get(counter).custID)
@@ -46,7 +56,7 @@ public class Customer {
 		
 	}
 	
-	public Customer(String name, String address, String email, String cardNumber, int custID, int roomID)
+	public Customer(String name, String address, String email, String cardNumber, int custID, int roomID, String checkin)
 	{
 		this.name = name;
 		this.address = address;
@@ -54,6 +64,7 @@ public class Customer {
 		this.cardNumber = cardNumber;
 		this.custID = custID;
 		this.roomID = roomID;
+		this.checkin = checkin;
 	}
 	
 	public String getPass() {
@@ -119,12 +130,22 @@ public class Customer {
 		customerList.clear();
 	}
 	
+	public String getCheckin() {
+		return checkin;
+	}
+
+	public void setCheckin(String checkin) {
+		this.checkin = checkin;
+	}
+
+	
 	public static void loadCustomerData() { //Invalid method declaration; return type required //ArrayList<HotelRoom> -> void    
 	      
 		String name;
 		String address;
 		String email;
 		String cardNumber;
+		String checkin;
 		int custID;
 		int roomID;
         
@@ -150,7 +171,8 @@ public class Customer {
     		cardNumber = customerInfoArray[3];	
     		custID = Integer.parseInt(customerInfoArray[4]);
           	roomID = Integer.parseInt(customerInfoArray[5]);
-        	Customer customerInst = new Customer(name, address, email, cardNumber, custID, roomID);
+          	checkin = customerInfoArray[6];
+        	Customer customerInst = new Customer(name, address, email, cardNumber, custID, roomID, checkin);
         	customerList.add(customerInst);
         	//System.out.println(customerList);
         }
@@ -190,7 +212,7 @@ public class Customer {
 	
 	@Override
 	public String toString(){
-		String customerFormat =  name +  "," + email + "," + address + "," + cardNumber + "," + custID + "," + roomID + "\n";
+		String customerFormat =  name +  "," + email + "," + address + "," + cardNumber + "," + custID + "," + roomID +","+ checkin +"\n";
         return customerFormat;
 	}
 	public static void delCUS(String id){
@@ -216,4 +238,29 @@ public class Customer {
        writeCustomerData();
     }
 	
+	public static String Checkout(String id){
+		
+		int i;
+		for(i = 0 ; i<customerList.size();i++) {
+			if(String.valueOf(customerList.get(i).getCustID()).equals(id)) {
+				return customerList.get(i).getCheckin();
+				
+			}
+			
+	      
+
+	       
+	    }
+		return "not found";
+	}
+	public static String findEmail(String id){
+		int i;
+		for(i = 0 ; i<customerList.size();i++) {
+			if(String.valueOf(customerList.get(i).getCustID()).equals(id)) {
+				return customerList.get(i).getAddy();
+				
+			}
+	    }
+		return "no email found";
+	}
 }
