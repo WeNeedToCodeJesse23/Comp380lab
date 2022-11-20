@@ -1,20 +1,27 @@
 //import java.awt.*;
 import java.awt.event.ActionListener;
-//import java.io.File;
-//import java.io.FileNotFoundException;
-//import java.util.ArrayList;
-//import java.util.Scanner;
 import java.awt.event.ActionEvent;
-import javax.swing.*;
+//import javax.swing;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 public class rateReservation extends JFrame{
-    JFrame test;
-    JButton backspace;
-    
     private static final long serialVersionUID = 1L;
     private String name;
     private int confirmationNum;
+    
+    JPanel panel;
+    JFrame rateWindow;
+    JButton backspace;
+    JButton oneStar;
+    JButton twoStar;
+    JButton threeStar;
+    JButton fourStar;
+    JButton fiveStar;
+    
 
     public String getName() {
         return name;
@@ -24,18 +31,40 @@ public class rateReservation extends JFrame{
         return confirmationNum;
     }
 
-    public rateReservation(){
-        test = new JFrame("Rate");
+    public rateReservation(int width){
+        rateWindow = new JFrame();
+        panel = new JPanel();
+        panel.setLayout(null);
+        rateWindow.setSize(700, 500);
+        rateWindow.add(panel);
+
+
+        rateWindow = new JFrame("Rate");
         backspace = new JButton("Back Space");
-   
-        
-        test.setSize(700,500);
-        test.setLayout(null);
+        oneStar = new JButton("One Star");
+        twoStar = new JButton("Two Stars");
+        threeStar = new JButton("Three Stars");
+        fourStar = new JButton("Four Stars");
+        fiveStar = new JButton("Five Stars");
+
+        rateWindow.setLayout(null);
         backspace.setBounds(50,50, 50, 50);
-        // fix backspace bounds probably
-        test.setVisible(true);
-        test.add(backspace);
+        rateWindow.setVisible(true);
+        rateWindow.add(backspace);
         backspace.setVisible(true);
+
+        oneStar.setBounds(300,25,150,40);
+        twoStar.setBounds(350,25,150,40);
+        threeStar.setBounds(400,25,150,50);
+        fourStar.setBounds(450,25,150,40);
+        fiveStar.setBounds(500,25,150,40);
+
+        panel.add(oneStar);
+        panel.add(twoStar);
+        panel.add(threeStar);
+        panel.add(fourStar);
+        panel.add(fiveStar);
+        panel.add(backspace);
 
         myActionListener Dothis = new myActionListener();
         backspace.addActionListener(Dothis);
@@ -45,7 +74,7 @@ public class rateReservation extends JFrame{
 
         public void actionPerformed(ActionEvent event) {
              if (event.getSource() == backspace) {
-                test.setVisible(false);
+                rateWindow.setVisible(false);
                 SearchWindow tryme = new SearchWindow();
                
             }
