@@ -45,7 +45,7 @@ public class GUI extends JFrame {
 
         //main window
         Make = new JButton("Search Reservation");
-        Cancel = new JButton("Cancel Reservation");
+        Cancel = new JButton("Check-Out");
         Rate = new JButton("Rate Reservation");
         Change = new JButton("Change Room");
         Login = new JButton("Login");

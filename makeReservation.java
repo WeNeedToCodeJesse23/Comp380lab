@@ -135,6 +135,7 @@ public class makeReservation /*extends JFrame*/ {
                 String email = emailField.getText();
                 String cardNumber = cardNumberField.getText();
                 Customer userInfo = new Customer(name, address, email, cardNumber);
+                System.out.println(userInfo.getCheckin());
 
                 userInfo.setRoomID(RoomSelected);
                // System.out.println("this is Given ID " + userInfo.getRoomID());
