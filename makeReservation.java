@@ -18,6 +18,22 @@ import javax.swing.*;
 //private String custID;
 //private int roomID;
 
+/**
+ * @author Jaztin Tabunda
+ * Date of Code: Nov. 7, 2022
+ * <p>
+ * Programmer's Names: Alondra, Omar, Jesse, Jaztin
+ * <p>
+ * Brief Description of the Class/Module:
+ * <p> 
+ * This class is used to make the GUI for the Make a Reservation Window Functionality. This Window will take in input from the user.
+ * Inputted Reservation information such as name, address, email, card number,
+ * Customer ID, and Room ID are received through the use of this class. This class implements Java's built-in Swing library to create a
+ * Reservation Window GUI. Additionally, this class implements the ActionListener class to provide button functionality for the buttons on the 
+ * MakeReservation Window. 
+ * 
+ */
+
 public class makeReservation /*extends JFrame*/ {
     JFrame reserveWindow;
     JPanel panel;
@@ -39,7 +55,13 @@ public class makeReservation /*extends JFrame*/ {
 	
 	
     //ArrayList<HotelRoom> roomList;
-
+/**
+ * 
+ * @param RoomSelected
+ * The MakeReservation class's constructor takes in the RoomSelected parameter to generate an instance of MakeReservationWindow that
+ * will reserve a room that has a roomID that matches the value passed in. In other words, after receiving the selected room,
+ * this class will allow the user to fill out the rest of the reservation information such as name, address, email address, and card number
+ */
      public makeReservation(int RoomSelected){
         this.RoomSelected = RoomSelected + 1;
         reserveWindow = new JFrame();

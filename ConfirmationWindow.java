@@ -6,7 +6,21 @@ import javax.swing.*;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 
-//import makeReservation.myActionListener;
+/**
+ * @author Jaztin Tabunda
+ * Date of Code: Nov. 7, 2022
+ * <p>
+ * Programmer's Names: Alondra, Omar, Jesse, Jaztin
+ * <p>
+ * Brief Description of the Class/Module:
+ * <p> 
+ * This class is used to make the GUI for the Confirmation Window Functionality. This Window will output/send a confirmation
+ * to the user stating that their room has been reserved. Reservation information such as name, address, email, card number,
+ * Customer ID, and Room ID are shown through the use of this class. This class implements Java's built-in Swing library to create a
+ * Confirmation Window GUI. Additionally, this class implements the ActionListener class to provide button functionality for the buttons on the 
+ * ConfirmationWindow.
+ * 
+ */
 
 public class ConfirmationWindow {
 	
@@ -32,6 +46,16 @@ public class ConfirmationWindow {
 	
 	JButton home;
 	myActionListener listener = new myActionListener();
+	
+	/**
+	 * 
+	 * @param userInfo
+	 * 
+	 * The ConfirmationWindow class's constructor takes in the userInfo parameter to generate a Reservation Confirmation Window.
+	 * userInfo is taken in from another class that passes the Customer information inside which would include
+	 * the name, address, email, cardNumber, custID, and roomID of the user that reserves the room.
+	 * 
+	 */
 	
 	public ConfirmationWindow(Customer userInfo)
 	{
