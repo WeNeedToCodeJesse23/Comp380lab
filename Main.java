@@ -1,13 +1,26 @@
- //package com.company;
-//import java.awt.*;
-//import java.awt.event.ActionListener;
-//import java.awt.event.ActionEvent;
-//import javax.swing.*;
 
+/**
+* <h1>Main</h1>
+* The Main class and main class function boot starts the main GUI class
+* The Gui Class is the mainframework to the project
+* 
+* <p>
+* <b>Note:</b> 
+*
+* @author  Jesse Cruz, Omar Garcia
+* @version 1.0
+* @since   2022-10-01
+*/
 
 public class Main{
-	
-    public static void main(String[] args) {              //has a connection to sql database //loads data when launch
+	   /**
+	    * This is the main method it calls the function to load the saved data in to the object types array.
+	    * Calls the main GUi class that accesses all other classes.
+	   * @param numA This is the first paramter to addNum method
+	   * @param numB  This is the second parameter to addNum method
+	   * @return nothing
+	   */
+    public static void main(String[] args) {              
     	HotelRoom.loadHotelData();
        	Customer.loadCustomerData();
        	manager.loadManagerData();

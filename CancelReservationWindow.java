@@ -15,6 +15,19 @@ import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 //import java.awt.event.ActionListener;
+/**
+* <h1>Main</h1>
+*The Cancel class was served to cancel a reservation but it is now used to checkout from your reservation.
+*Prompts user for some customer info and removes them from the customer list and sets the room to available.
+*Displays a message after the Customer Successfully checks out.
+* 
+* <p>
+* <b>Note:</b> 
+*
+* @author  Jesse Cruz, Jaztin Tabunda, Omar Garcia
+* @version 2.0
+* @since   2022-10-30
+*/
 
 public class CancelReservationWindow {
 	
@@ -32,6 +45,17 @@ public class CancelReservationWindow {
     
 	myActionListener listener = new myActionListener();
 	int CustomerKey;
+	   /**
+	    * Build the Check Out window
+	    * Implements the action listener for two buttons.
+	    * backspace button takes customer back to the main GUI
+	    * cancel button gets todays date to estimate how many days the customer stayed in ordere to calculate an estimate.
+	    * cancel button calls functions to remove unnecessary data.
+	    * cancel button calls function to open a room for checking in
+	    * cancel button shows user a quick summary of their stay.
+	   * @param key used to access the Cancel Gui class after the customer logs in
+	   * @return nothing
+	   */
 
 	
 	public CancelReservationWindow(int key)

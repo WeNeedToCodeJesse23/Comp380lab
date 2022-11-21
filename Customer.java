@@ -9,7 +9,19 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
-
+/**
+* <h1>Main</h1>
+*The Customer class is used to keep track of the customer info
+*Customer class knew what room a custoemr had and their Customer ID for logging in
+*Customer class kept basic info of customer
+* 
+* <p>
+* <b>Note:</b> 
+*
+* @author  Jesse Cruz, Jaztin Tabunda , Omar Garcia, Alondra Sanchez
+* @version 1.0
+* @since   2022-10-15
+*/
 
 public class Customer {
 	
@@ -24,6 +36,15 @@ public class Customer {
 	private String pass; //idk if we'll be needing this because the login password will be customerID
 	
 	private String checkin;
+	  /**
+	    * Customer Constructor everything necessary to create a customer
+	    * saves the date the customer checks in
+	   * @param name Customers name
+	   * @param address Customers address
+	   * @param email customers email
+	   * @param cardNumber Customers Credit card number
+	   * @return nothing
+	   */
 
 	public Customer(String name, String address, String email, String cardNumber)
 	{
@@ -55,7 +76,18 @@ public class Customer {
 	        pass = String.valueOf(custID);
 		
 	}
-	
+	  /**
+	    * Creates the customer
+	   * @param name Customers name
+	   * @param address Customers address
+	   * @param email customers email
+	   * @param cardNumber Customers Credit card number
+	   * @param custID sets the customer id
+	   * @param roomID sets the room id
+	   * @param checkin sets check in date
+	   * @return nothing
+	   */
+
 	public Customer(String name, String address, String email, String cardNumber, int custID, int roomID, String checkin)
 	{
 		this.name = name;
@@ -73,6 +105,12 @@ public class Customer {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	  /**
+	    * Name and Customerid are checked to make sure theyre dealing with the correct reservation and customer
+	   * @param Name Customers name
+	   * @param pw Customers ID which is random
+	   * @return i returns positive number to allow for login
+	   */
 	
 	public static int CheckPass(String Name, String pw){
         for(int i = 0; i< customerList.size(); i++){
@@ -124,7 +162,10 @@ public class Customer {
 	{
 		return customerList;
 	}
-	
+	  /**
+	    * Clears the customer array list object type
+	   * @return void 
+	   */
 	public static void clearCustomerList()
 	{
 		customerList.clear();
@@ -137,6 +178,12 @@ public class Customer {
 	public void setCheckin(String checkin) {
 		this.checkin = checkin;
 	}
+	  /**
+	    * Uses the file "CurrentCustomers.txt" to fill the customer arraylist of the customer object type.
+	    * Function loaded up in the beginning of the project so the data is accessible to the appropriate customer and or manager.
+	    * while loop cehcks each line of the text file for data and is broken up into pieces into the proper value data.
+	   * @return void
+	   */
 
 	
 	public static void loadCustomerData() { //Invalid method declaration; return type required //ArrayList<HotelRoom> -> void    
@@ -178,17 +225,26 @@ public class Customer {
         }
       //return roomList; 
     }
-	
+	  /**
+	    * adds a customer type to the customer array list
+	   * @return void
+	   */
 	public static void addToList(Customer userInfo)
 	{
 		customerList.add(userInfo);
 	}
-	
+	 /**
+	    * removes a customer type to the customer array list
+	   * @return void
+	   */
 	public static void deleteFromList(Customer userInfo)
 	{
 		customerList.remove(userInfo);
 	}
-	
+	 /**
+	    * Called to update data on the text file written from the customer array list object type.
+	   * @return void
+	   */
     public static void writeCustomerData() {
         String customerData;
         try
@@ -209,12 +265,20 @@ public class Customer {
             System.exit(1);
         } //setting up getting input from txt file
     }
-	
+    /**
+	    *Used to print a customer
+	   * @return void
+	   */
 	@Override
 	public String toString(){
 		String customerFormat =  name +  "," + email + "," + address + "," + cardNumber + "," + custID + "," + roomID +","+ checkin +"\n";
         return customerFormat;
 	}
+	  /**
+	    *deletes a specific customer from the csutomer array list and updates the data
+	    *@param id used to find the specific customer with their unique customer ID
+	   * @return void
+	   */
 	public static void delCUS(String id){
 		System.out.println(id);
 		int i;
@@ -228,7 +292,12 @@ public class Customer {
 			
 		}
 	}
-	
+	  /**
+	    *changes the roomID of the customer
+	    *@param location gets room id of the customer
+	    *@param newRoom sets newRoom of the customer
+	   * @return void
+	   */
 	public static void ChangeRoom(int location, int newRoom){
        // System.out.println("CHECK THIS RN: " + customerList.get(location).getRoomID() + " AND " + customerList.get(location).getName());
        // System.out.println("New Room = " + newRoom);
@@ -237,7 +306,11 @@ public class Customer {
 
        writeCustomerData();
     }
-	
+	  /**
+	    *gets the check in date of a specific customer
+	    *@param id used to find the specific customer with their unique customer ID
+	   * @return String returns the date
+	   */
 	public static String Checkout(String id){
 		
 		int i;
@@ -253,6 +326,11 @@ public class Customer {
 	    }
 		return "not found";
 	}
+	  /**
+	    * gets the email of specific customer
+	    *@param id used to find the specific customer with their unique customer ID
+	   * @return String returns the date
+	   */
 	public static String findEmail(String id){
 		int i;
 		for(i = 0 ; i<customerList.size();i++) {
