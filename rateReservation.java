@@ -34,6 +34,7 @@ public class rateReservation extends JFrame{
     
     /** 
      * @return String
+     * getName will get name and return the user name
      */
     public String getName() {
         return name;
@@ -42,6 +43,7 @@ public class rateReservation extends JFrame{
     
     /** 
      * @return int
+     * getConfirmationNum will get user confirmaton number and return that number
      */
     public int getConfirmationNum(){
         return confirmationNum;

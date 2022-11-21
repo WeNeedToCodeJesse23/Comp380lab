@@ -31,6 +31,7 @@ public class manager {
     
     /** 
      * @return String
+     * getName will get manager name and return the name
      */
     public String getName() {
         return name;
@@ -38,6 +39,7 @@ public class manager {
     
     /** 
      * @param name
+     * setName will set the entered name as username
      */
     public void setName(String name){
         this.name = name;
@@ -45,6 +47,7 @@ public class manager {
     
     /** 
      * @return String
+     * getPassword will receive user input for desired password
      */
     public String getPassword() {
         return password;
@@ -52,6 +55,7 @@ public class manager {
     
     /** 
      * @param password
+     * setPassword will set user inputs password as account password
      */
     public void setPassword(String password){
         this.password = password;
@@ -59,6 +63,7 @@ public class manager {
     
     /** 
      * @return int
+     * getManagerId will receive input on managerID
      */
     public int getManagerId(){
         return managerId;
@@ -66,6 +71,7 @@ public class manager {
     
     /** 
      * @param managerId
+     * setManagerID will set users managerID
      */
     public void setManagerId(int managerId) {
         this.managerId = managerId;
@@ -76,6 +82,7 @@ public class manager {
      * @param Name
      * @param pw
      * @return int
+     * checkPass will check if user input is a valid password if it is it will allow login otherwise login not allowed.
      */
     public static int CheckPass(String Name, String pw){
         for(int i = 0; i< managerList.size(); i++){
@@ -121,6 +128,7 @@ public class manager {
 	
     /** 
      * @return ArrayList<manager>
+     * This will get a list of managers
      */
     public static ArrayList<manager> getManagerList()
 	{
@@ -130,6 +138,7 @@ public class manager {
 	
     /** 
      * @return ArrayList<HotelRoom>
+     * This will get a list of available rooms in hotel.
      */
     public static ArrayList<HotelRoom> getAvailRoomList()
 	{
@@ -139,6 +148,7 @@ public class manager {
 	
     /** 
      * @return ArrayList<HotelRoom>
+     * This will grab a list of occupied rooms within the hotel
      */
     public static ArrayList<HotelRoom> getOccuRoomList()
 	{
@@ -148,6 +158,7 @@ public class manager {
 	
     /** 
      * @return ArrayList<Customer>
+     * This will grab a list of cancelled rooms within the hotel.
      */
     public static ArrayList<Customer> getCancelledList()
 	{
@@ -200,6 +211,7 @@ public class manager {
 	
     /** 
      * @param list
+     * This will be able to generate this list of chosen data.
      */
     public static <T> void exportList(ArrayList<T> list)
 	{
