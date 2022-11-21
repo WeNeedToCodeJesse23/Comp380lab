@@ -34,12 +34,13 @@ public class rateReservation extends JFrame{
     public rateReservation(int width){
         rateWindow = new JFrame();
         panel = new JPanel();
-        panel.setLayout(null);
+        
         rateWindow.setSize(700, 500);
+        panel.setLayout(null);
         rateWindow.add(panel);
 
 
-        rateWindow = new JFrame("Rate");
+        //rateWindow = new JFrame("Rate");
         backspace = new JButton("Back Space");
         oneStar = new JButton("One Star");
         twoStar = new JButton("Two Stars");
@@ -47,17 +48,12 @@ public class rateReservation extends JFrame{
         fourStar = new JButton("Four Stars");
         fiveStar = new JButton("Five Stars");
 
-        rateWindow.setLayout(null);
-        backspace.setBounds(50,50, 50, 50);
-        rateWindow.setVisible(true);
-        rateWindow.add(backspace);
-        backspace.setVisible(true);
-
         oneStar.setBounds(300,25,150,40);
         twoStar.setBounds(350,25,150,40);
         threeStar.setBounds(400,25,150,50);
         fourStar.setBounds(450,25,150,40);
         fiveStar.setBounds(500,25,150,40);
+        backspace.setBounds(250, 400, 150, 40);
 
         panel.add(oneStar);
         panel.add(twoStar);
@@ -65,9 +61,15 @@ public class rateReservation extends JFrame{
         panel.add(fourStar);
         panel.add(fiveStar);
         panel.add(backspace);
+        
+        //rateWindow.setLayout(null);
+        
+        rateWindow.setVisible(true);
 
         myActionListener Dothis = new myActionListener();
         backspace.addActionListener(Dothis);
+        
+        
     }
 
     private class myActionListener implements ActionListener {
@@ -79,8 +81,6 @@ public class rateReservation extends JFrame{
                
             }
         }
-
-
      
     }
 

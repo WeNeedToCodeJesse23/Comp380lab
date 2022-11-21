@@ -98,6 +98,7 @@ public class GUI extends JFrame {
             LoginWindow();
         } else {
             System.out.println("this button functions" + CustomerKey);
+            rateReservation rateWindow = new rateReservation(key);
             main.dispose();
         }
     }
