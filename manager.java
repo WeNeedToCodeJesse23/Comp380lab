@@ -3,6 +3,14 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+/**
+ * Manager
+ * @author Alondra, Jaztin, Omar, Jesse  Nov. 3, 2022
+ * The manager class will check to see if the user who logs in is a manager or not.
+ * After logging in it will check to see if the user is a manager, if they are granted access to generate reports, check cancelled rooms, etc.
+ * If the user is not a manager they will not be granted manager access.
+ * An important function would be txtinput because it allows all of our data to be read and saved.
+ */
 
 public class manager {
     private String name;
@@ -20,26 +28,56 @@ public class manager {
     	this.managerId = managerId;
     }
     
+    
+    /** 
+     * @return String
+     */
     public String getName() {
         return name;
     }
+    
+    /** 
+     * @param name
+     */
     public void setName(String name){
         this.name = name;
     }
+    
+    /** 
+     * @return String
+     */
     public String getPassword() {
         return password;
     }
+    
+    /** 
+     * @param password
+     */
     public void setPassword(String password){
         this.password = password;
     }
+    
+    /** 
+     * @return int
+     */
     public int getManagerId(){
         return managerId;
     }
+    
+    /** 
+     * @param managerId
+     */
     public void setManagerId(int managerId) {
         this.managerId = managerId;
     }
     
-	public static int CheckPass(String Name, String pw){
+	
+    /** 
+     * @param Name
+     * @param pw
+     * @return int
+     */
+    public static int CheckPass(String Name, String pw){
         for(int i = 0; i< managerList.size(); i++){
             if((managerList.get(i).getName().equals(Name)) && (managerList.get(i).getPassword().equals(pw)) ) {
                 return i;
@@ -80,22 +118,38 @@ public class manager {
       //return roomList; 
     }
 
-	public static ArrayList<manager> getManagerList()
+	
+    /** 
+     * @return ArrayList<manager>
+     */
+    public static ArrayList<manager> getManagerList()
 	{
 		return managerList;
 	}
 
-	public static ArrayList<HotelRoom> getAvailRoomList()
+	
+    /** 
+     * @return ArrayList<HotelRoom>
+     */
+    public static ArrayList<HotelRoom> getAvailRoomList()
 	{
 		return availableRoomList;
 	}
 	
-	public static ArrayList<HotelRoom> getOccuRoomList()
+	
+    /** 
+     * @return ArrayList<HotelRoom>
+     */
+    public static ArrayList<HotelRoom> getOccuRoomList()
 	{
 		return occupiedRoomList;
 	}
 
-	public static ArrayList<Customer> getCancelledList()
+	
+    /** 
+     * @return ArrayList<Customer>
+     */
+    public static ArrayList<Customer> getCancelledList()
 	{
 		return cancelledList;
 	}
@@ -143,7 +197,11 @@ public class manager {
         } //setting up getting input from txt file
 	}
 	
-	public static <T> void exportList(ArrayList<T> list)
+	
+    /** 
+     * @param list
+     */
+    public static <T> void exportList(ArrayList<T> list)
 	{
 		String data;
         try

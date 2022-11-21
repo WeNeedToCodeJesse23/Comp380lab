@@ -8,6 +8,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 //import ReviewReservationWindow.myActionListener;
+/**
+ * Review Reservation
+ * Nov. 11, 2022
+ * @author Jaztin, Omar, Jesse, Alondra 
+ * Review Reservation allows for customers to review their reservation before confirming the reservation.
+ * This window will also update the hotel data information once confirmation from customer is input.
+ * An important function used was myActionListener which allowed for user input to save and display data.
+ */
 
 public class ReviewReservationWindow {
 	private Font testFont = new Font("Harlow Solid Italic", Font.PLAIN, 20);

@@ -5,6 +5,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+/**
+ * Generate Report
+ * Nov. 11, 2022
+ * @author Jaztin, Omar, Jesse, Alondra 
+ * Generate report will generate a report of various hotel data:rooms available, cancelled rooms, number of occupied rooms, etc.
+ * Generate will also be able to be accessed by manager users.
+ * An important function used was myActionListener, it allowed for user input on which report they wanted to be generated.
+ */
 
 public class GenReportWindow {
 	

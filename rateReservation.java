@@ -7,6 +7,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Rate Reservation
+ * @author Alondra, Jaztin, Omar, Jesse 
+ * Nov 3, 2022
+ * Rate Reservation allows customers to give a rating of 1 to 5 stars after logging into their accounts.
+ * An important function used was myActionListener which allows for user input on which rating will be given.
+ */
+
 
 public class rateReservation extends JFrame{
     private static final long serialVersionUID = 1L;
@@ -23,10 +31,18 @@ public class rateReservation extends JFrame{
     JButton fiveStar;
     
 
+    
+    /** 
+     * @return String
+     */
     public String getName() {
         return name;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getConfirmationNum(){
         return confirmationNum;
     }
