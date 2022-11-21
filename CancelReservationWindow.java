@@ -114,6 +114,8 @@ public class CancelReservationWindow {
             	 
 				 JOptionPane.showMessageDialog(null, "Payment processed\n"+"Your total for a "+roomtype+" room will be: $"+tot
 						 +"\nNumber of days Stayed: "+nod+"\n Reciept sent to: "+emaddy);
+             	 Customer.delCUS(custIDfld.getText());
+            	 HotelRoom.openRum(rumIDfld.getText());
             	
             	 cancelFrame.dispose();
                  GUI goBack = new GUI();

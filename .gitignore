@@ -18,3 +18,8 @@
 /CancelReservationWindow$myActionListener.class
 .project
 .classpath
+/GenReportWindow$myActionListener.class
+/GenReportWindow.class
+/ReviewReservationWindow$myActionListener.class
+/ReviewReservationWindow.class
+/billing.class
