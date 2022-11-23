@@ -23,3 +23,15 @@
 /ReviewReservationWindow$myActionListener.class
 /ReviewReservationWindow.class
 /billing.class
+*.html
+doc/type-search-index.js
+*.js
+*.css
+*.png
+doc/element-list
+/ChangeRoom.class
+/ChangeRoom$1.class
+/ChangeRoom$myActionListener.class
+/CancelReservationWindowTest.class
+/CustomerTest.class
+/MainTest.class
