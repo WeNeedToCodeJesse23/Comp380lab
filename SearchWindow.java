@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author omarg,
  *
  */
-public class SearchWindow {
+public class SearchWindow extends TableGUIWindow {
     private static final long serialVersionUID = 1L;
     
 
