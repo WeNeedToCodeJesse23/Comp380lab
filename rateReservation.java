@@ -66,11 +66,11 @@ public class rateReservation extends JFrame{
         fourStar = new JButton("Four Stars");
         fiveStar = new JButton("Five Stars");
 
-        oneStar.setBounds(300,25,150,40);
-        twoStar.setBounds(350,25,150,40);
-        threeStar.setBounds(400,25,150,50);
-        fourStar.setBounds(450,25,150,40);
-        fiveStar.setBounds(500,25,150,40);
+        oneStar.setBounds(90,25,100,40);
+        twoStar.setBounds(190,25,100,40);
+        threeStar.setBounds(290,25,110,40);
+        fourStar.setBounds(400,25,100,40);
+        fiveStar.setBounds(500,25,100,40);
         backspace.setBounds(250, 400, 150, 40);
 
         panel.add(oneStar);

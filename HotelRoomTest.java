@@ -6,59 +6,73 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HotelRoomTest {
 
+	HotelRoom testRoom = new HotelRoom(55, false, "Regular", 2);
+	
     @Test
-    void getRoomID() {
+    void getRoomIDTest() {
+    	int output = testRoom.getRoomID();
+    	assertEquals(55, output);
     }
 
     @Test
-    void getNumberOfBeds() {
+    void getNumberOfBedsTest() {
+    	int output = testRoom.getNumberOfBeds();
+    	assertEquals(2, output);
     }
 
     @Test
-    void getRoomStatus() {
+    void getRoomStatusTest() {
+    	boolean output = testRoom.getRoomStatus();
+    	assertEquals(false, output);
     }
 
     @Test
-    void setReservedStatus() {
+    void setReservedStatusTest() {
+    	testRoom.setReservedStatus(true);
+    	boolean output = testRoom.getRoomStatus();
+    	assertEquals(true, output);
     }
 
     @Test
-    void getRoomType() {
+    void getRoomTypeTest() {
+    	String output = testRoom.getRoomType();
+    	assertEquals("Regular", output);
     }
 
     @Test
-    void testToString() {
+    void testToStringTest() {
+    	assertEquals("55,false,Regular,2\n", testRoom.toString());		
     }
 
     @Test
-    void loadHotelData() {
+    void loadHotelDataTest() {
     }
 
     @Test
-    void getCurrentRoomList() {
+    void getCurrentRoomListTest() {
     }
 
     @Test
-    void returnCollection() {
+    void returnCollectionTest() {
     }
 
     @Test
-    void updateRoomStatus() {
+    void updateRoomStatusTest() {
     }
 
     @Test
-    void writeHotelData() {
+    void writeHotelDataTest() {
     }
 
     @Test
-    void numAvailReg() {
+    void numAvailRegTest() {
     }
 
     @Test
-    void numAvailLux() {
+    void numAvailLuxTest() {
     }
 
     @Test
-    void openRum() {
+    void openRumTest() {
     }
 }
