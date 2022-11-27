@@ -14,5 +14,7 @@ public class CustomerTest {
 		String name = test.getCurrentCustomerList().get(1).getName();
 		assertEquals("George",name);
 	}
+	
+	
 
 }

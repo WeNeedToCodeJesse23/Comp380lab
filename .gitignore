@@ -35,3 +35,6 @@ doc/element-list
 /CancelReservationWindowTest.class
 /CustomerTest.class
 /MainTest.class
+/HotelRoomTest.class
+/CheckoutWindow$myActionListener.class
+/CheckoutWindow.class

@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 //import java.awt.event.ActionListener;
 /**
-* <h1>Main</h1>
+* <h1>Cancel</h1>
 *The Cancel class was served to cancel a reservation but it is now used to checkout from your reservation.
 *Prompts user for some customer info and removes them from the customer list and sets the room to available.
 *Displays a message after the Customer Successfully checks out.
@@ -29,7 +29,7 @@ import javax.swing.*;
 * @since   2022-10-30
 */
 
-public class CancelReservationWindow {
+public class CheckoutWindow {
 	
 	JFrame cancelFrame;
 	JPanel panel;
@@ -58,7 +58,7 @@ public class CancelReservationWindow {
 	   */
 
 	
-	public CancelReservationWindow(int key)
+	public CheckoutWindow(int key)
 	{
 		CustomerKey = key;
 		cancelFrame = new JFrame("Cancel Reservation");

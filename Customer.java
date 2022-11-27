@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
 /**
-* <h1>Main</h1>
+* <h1>Customer</h1>
 *The Customer class is used to keep track of the customer info
 *Customer class knew what room a custoemr had and their Customer ID for logging in
 *Customer class kept basic info of customer

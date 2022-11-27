@@ -52,7 +52,7 @@ public class makeReservation /*extends JFrame*/ {
     JButton reserve;
     myActionListener listener = new myActionListener();
     int RoomSelected = 0;
-	
+
 	
     //ArrayList<HotelRoom> roomList;
 /**
@@ -146,6 +146,8 @@ public class makeReservation /*extends JFrame*/ {
                 reserveWindow.setVisible(false);
               
                 reserveWindow.dispose();
+                
+               
               //  HotelRoom.clearRoomList();
               //  Customer.clearCustomerList();
                   SearchWindow searchWin = new SearchWindow(); 
@@ -156,6 +158,12 @@ public class makeReservation /*extends JFrame*/ {
                 String address = addressField.getText();
                 String email = emailField.getText();
                 String cardNumber = cardNumberField.getText();
+                
+                	 if(cardNumber.length()!=16) {
+                     	JOptionPane.showMessageDialog(null, "Invalid card number. \n Try again!");
+                     	return;
+                	 }
+             
                 Customer userInfo = new Customer(name, address, email, cardNumber);
                 System.out.println(userInfo.getCheckin());
 

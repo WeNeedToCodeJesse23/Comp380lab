@@ -266,7 +266,7 @@ public class GUI extends JFrame  {
             LoginWindow();
         } else {
           //  System.out.println("this button functions" + CustomerKey);
-            CancelReservationWindow goTo = new CancelReservationWindow(CustomerKey);
+            CheckoutWindow goTo = new CheckoutWindow(CustomerKey);
             main.dispose();
         }
     }

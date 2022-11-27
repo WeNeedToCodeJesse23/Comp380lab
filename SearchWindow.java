@@ -119,7 +119,7 @@ public class SearchWindow {
         backspace.setBounds(20, 25, 150, 40);
         MakeReservationButton.setBounds(20, 80, 150, 40);
 
-        ThisWindow.setSize(10000, 10000);
+        ThisWindow.setSize(1100, 800);
         ThisWindow.setLayout(null);
         ThisWindow.setVisible(true);
 
