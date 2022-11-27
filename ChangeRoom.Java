@@ -1,4 +1,4 @@
-//package com.company;
+package com.company;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -17,12 +17,13 @@ import java.util.stream.Stream;
  * Class is going to Change the Room of the user. Displays current Rooms available and Rooms not available
  * @author omarg
  */
-public class ChangeRoom extends TableGUIWindow {
-    
-      /**
-        * is going to store the user data location of current user in the customer database collection
-        */
+public class ChangeRoom extends TableGUIWindow{
+
+    /**
+     * is going to store the user data location of current user in the customer database collection
+     */
     public int currentLocation;
+
 
     /**
      * ChangeRoom is going to make up the ChangeRoom window
@@ -38,24 +39,24 @@ public class ChangeRoom extends TableGUIWindow {
         ThisWindow = new JFrame("search");
         backspace = new JButton("Back Space");
         ThisWindow.getContentPane().setBackground(Color.darkGray);
-        ChangeReservation = new JButton("Make Reservation");
+        MakeReservationButton = new JButton("Make Reservation");
         backspace.setBounds(20, 25, 150, 40);
-        ChangeReservation.setBounds(20, 80, 150, 40);
+        MakeReservationButton.setBounds(20, 80, 150, 40);
 
         ThisWindow.setSize(10000, 10000);
         ThisWindow.setLayout(null);
         ThisWindow.setVisible(true);
 
-        ThisWindow.add(ChangeReservation);
+        ThisWindow.add(MakeReservationButton);
         ThisWindow.add(backspace);
         backspace.setVisible(true);
-        ChangeReservation.setVisible(true);
+        MakeReservationButton.setVisible(true);
         ThisWindow.setVisible(true);
 
 
         myActionListener Dothis = new myActionListener();
         backspace.addActionListener(Dothis);
-        ChangeReservation.addActionListener(Dothis);
+        MakeReservationButton.addActionListener(Dothis);
         makeTable();
     }
 
@@ -72,7 +73,7 @@ public class ChangeRoom extends TableGUIWindow {
                 GUI goBack = new GUI();
                 goBack.createAndShowGUI();
                 ThisWindow.dispose();
-            } if(event.getSource() == ChangeReservation){
+            } if(event.getSource() == MakeReservationButton){
                 if(!HotelRoom.ReturnCollection().get(RoomSelected).getRoomStatus()){
 
 //                    System.out.println("Old: " + RoomSelected + 1);
@@ -99,3 +100,4 @@ public class ChangeRoom extends TableGUIWindow {
     }
 
 }
+
