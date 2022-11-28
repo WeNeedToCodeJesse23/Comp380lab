@@ -4,15 +4,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 class HotelRoomTest {
 	
     HotelRoom test1 = new HotelRoom(10,false, "Regular",3);
-    HotelRoom test2 = new HotelRoom(20,false, "Regular",3);
-    HotelRoom test3 = new HotelRoom(30,false, "Luxury",5);
+    HotelRoom test3 = new HotelRoom(30,false, "Luxury",3);
     HotelRoom test4 = new HotelRoom(40,false, "Regular",3);
-    HotelRoom test5 = new HotelRoom(50,true, "Regular",3);
     HotelRoom test6 = new HotelRoom(60,true, "Luxury",5);
-	
+    
+    HotelRoom test2 = new HotelRoom(1,false, "Regular",2);
+    HotelRoom test5 = new HotelRoom(2,true, "Regular",2);
+    
     ArrayList<HotelRoom> testy = new ArrayList();
 
 	HotelRoom testRoom = new HotelRoom(55, false, "Regular", 2);
@@ -55,6 +58,7 @@ class HotelRoomTest {
 
     @Test
     void loadHotelDataTest() {
+    	
     }
 
     @Test
@@ -65,18 +69,27 @@ class HotelRoomTest {
     void returnCollectionTest() {
     }
 
+	/* Cases Testing:
+	 * if the room starts false
+	 * if the room starts true
+	 */
+    
     @Test
     void updateRoomStatusTest() {
-	testy.add(test1);
-        testy.add(test2);
-        testy.add(test3);
-        testy.add(test4);
-        testy.add(test5);
-        testy.add(test6);
-
-        assertEquals(false,test2.getRoomStatus());
+    	
+        HotelRoom.getCurrentRoomList().add(test2); //start false case
+        HotelRoom.getCurrentRoomList().add(test5); //start true case
+        boolean output;
+        
+        //if the room starts false
         HotelRoom.UpdateRoomStatus(test2.getRoomID());
-        assertEquals(true,test2.getRoomStatus());
+        output = test2.getRoomStatus();
+        assertEquals(true,output);
+
+        //if the room starts true
+        HotelRoom.UpdateRoomStatus(test5.getRoomID());
+        output = test5.getRoomStatus();
+        assertEquals(false,output);
 
     }
 
@@ -86,7 +99,7 @@ class HotelRoomTest {
 
     @Test
     void numAvailRegTest() {
-	testy.add(test1);
+    	testy.add(test1);
         testy.add(test2);
         testy.add(test3);
         testy.add(test4);
@@ -98,7 +111,7 @@ class HotelRoomTest {
 
     @Test
     void numAvailLuxTest() {
-	testy.add(test1);
+    	testy.add(test1);
         testy.add(test2);
         testy.add(test3);
         testy.add(test4);
