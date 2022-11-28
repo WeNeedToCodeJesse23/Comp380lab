@@ -6,6 +6,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+//import javax.swing.JOptionPane;
+import javax.swing.JDialog;
 
 /**
  * Rate Reservation
@@ -66,12 +68,12 @@ public class rateReservation extends JFrame{
         fourStar = new JButton("Four Stars");
         fiveStar = new JButton("Five Stars");
 
-        oneStar.setBounds(90,25,100,40);
-        twoStar.setBounds(190,25,100,40);
-        threeStar.setBounds(290,25,110,40);
-        fourStar.setBounds(400,25,100,40);
-        fiveStar.setBounds(500,25,100,40);
-        backspace.setBounds(250, 400, 150, 40);
+        oneStar.setBounds(25,25,125,40);
+        twoStar.setBounds(150,25,125,40);
+        threeStar.setBounds(275,25,125,40);
+        fourStar.setBounds(400,25,125,40);
+        fiveStar.setBounds(525,25,125,40);
+        backspace.setBounds(250, 400, 125, 40);
 
         panel.add(oneStar);
         panel.add(twoStar);
@@ -86,8 +88,11 @@ public class rateReservation extends JFrame{
 
         myActionListener Dothis = new myActionListener();
         backspace.addActionListener(Dothis);
-        
-        
+        oneStar.addActionListener(Dothis);
+        twoStar.addActionListener(Dothis);
+        threeStar.addActionListener(Dothis);
+        fourStar.addActionListener(Dothis);
+        fiveStar.addActionListener(Dothis);
     }
 
     private class myActionListener implements ActionListener {
@@ -95,8 +100,65 @@ public class rateReservation extends JFrame{
         public void actionPerformed(ActionEvent event) {
              if (event.getSource() == backspace) {
                 rateWindow.setVisible(false);
-                SearchWindow tryme = new SearchWindow();
+                GUI goBack = new GUI();
+                goBack.createAndShowGUI();
+                rateWindow.dispose();
                
+            }
+            else if(event.getSource() == oneStar){
+                rateWindow.setVisible(false);
+                JFrame Rating = new JFrame();
+                JDialog d = new JDialog(Rating,"Rating" );
+                JLabel one = new JLabel( "Thank you for your feedback!");
+                d.add(one);
+                d.setSize(200,100);
+                d.setVisible(true);
+            	 rateWindow.dispose();
+            
+            }
+            else if(event.getSource() == twoStar){
+                rateWindow.setVisible(false);
+                JFrame Rating = new JFrame();
+                JDialog d = new JDialog(Rating,"Rating" );
+                JLabel one = new JLabel( "Thank you for your feedback!");
+                d.add(one);
+                d.setSize(200,100);
+                d.setVisible(true);
+            	 rateWindow.dispose();
+            
+            }
+            else if(event.getSource() == threeStar){
+                rateWindow.setVisible(false);
+                JFrame Rating = new JFrame();
+                JDialog d = new JDialog(Rating,"Rating" );
+                JLabel one = new JLabel( "Thank you for your feedback!");
+                d.add(one);
+                d.setSize(200,100);
+                d.setVisible(true);
+            	 rateWindow.dispose();
+            
+            }
+            else if(event.getSource() == fourStar){
+                rateWindow.setVisible(false);
+                JFrame Rating = new JFrame();
+                JDialog d = new JDialog(Rating,"Rating" );
+                JLabel one = new JLabel( "Thank you for your feedback!");
+                d.add(one);
+                d.setSize(200,100);
+                d.setVisible(true);
+            	 rateWindow.dispose();
+            
+            }
+            else if(event.getSource() == fiveStar){
+                rateWindow.setVisible(false);
+                JFrame Rating = new JFrame();
+                JDialog d = new JDialog(Rating,"Rating" );
+                JLabel one = new JLabel( "Thank you for your feedback!");
+                d.add(one);
+                d.setSize(200,100);
+                d.setVisible(true);
+            	 rateWindow.dispose();
+            
             }
         }
      
