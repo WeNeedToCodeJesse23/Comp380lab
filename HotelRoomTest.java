@@ -8,15 +8,17 @@ import java.util.ArrayList;
 
 class HotelRoomTest {
 	
-    HotelRoom test1 = new HotelRoom(10,false, "Regular",3);
-    HotelRoom test3 = new HotelRoom(30,false, "Luxury",3);
-    HotelRoom test4 = new HotelRoom(40,false, "Regular",3);
-    HotelRoom test6 = new HotelRoom(60,true, "Luxury",5);
+	
+    HotelRoom test1 = new HotelRoom(3,false, "Regular",3);
+    HotelRoom test7 = new HotelRoom(5,false, "Regular",3);
+    HotelRoom test3 = new HotelRoom(4,false, "Luxury",5);
+    HotelRoom test4 = new HotelRoom(7,false, "Regular",3);
+    HotelRoom test8 = new HotelRoom(5,true, "Regular",3);
+    HotelRoom test6 = new HotelRoom(6,true, "Luxury",5);
     
     HotelRoom test2 = new HotelRoom(1,false, "Regular",2);
     HotelRoom test5 = new HotelRoom(2,true, "Regular",2);
     
-    ArrayList<HotelRoom> testy = new ArrayList();
 
 	HotelRoom testRoom = new HotelRoom(55, false, "Regular", 2);
 	
@@ -99,29 +101,33 @@ class HotelRoomTest {
 
     @Test
     void numAvailRegTest() {
-    	testy.add(test1);
-        testy.add(test2);
-        testy.add(test3);
-        testy.add(test4);
-        testy.add(test5);
-        testy.add(test6);
+    	//There are no Rooms, returns 0 
+        assertEquals(0,HotelRoom.numAvailReg());
 
-        assertEquals(3,HotelRoom.numAvailReg());
+        //There is a Regular Room, but it's occupied
+        HotelRoom.ReturnCollection().add(test5);
+        assertEquals(0,HotelRoom.numAvailReg());
+
+        //There is a Room that is unoccupied but it's a Luxury Room
+        HotelRoom.ReturnCollection().add(test3);
+        assertEquals(0,HotelRoom.numAvailReg());
+
+        //There is a Room that is occupied and Luxury Room
+        HotelRoom.ReturnCollection().add(test6);
+        assertEquals(0,HotelRoom.numAvailReg());
+
+        //There is a Room that is Regular and unoccupied
+        HotelRoom.ReturnCollection().add(test1);
+        HotelRoom.ReturnCollection().add(test7);
+        HotelRoom.ReturnCollection().add(test4);
+        HotelRoom.ReturnCollection().add(test2);
+        assertEquals(4,HotelRoom.numAvailReg());
+
     }
 
     @Test
     void numAvailLuxTest() {
-    	testy.add(test1);
-        testy.add(test2);
-        testy.add(test3);
-        testy.add(test4);
-        testy.add(test5);
-        testy.add(test6);
-
-        assertEquals(1,HotelRoom.numAvailLux());
-
-        HotelRoom test7 = new HotelRoom(66,false,"Luxury",5);
-        testy.add(test7);
+    	
     }
 
     @Test
