@@ -116,16 +116,11 @@ public class CheckoutWindow {
              {
             	 manager.getCancelledList().add(Customer.getCurrentCustomerList().get(CustomerKey));
             	 manager.writeCancelledList();
-            	// String sDate1=Customer.Checkout(custIDfld.getText()); 
             	 LocalDate before = LocalDate.parse(Customer.Checkout(custIDfld.getText()));
             	 LocalDate now = LocalDate.now();
             	 long nod = ChronoUnit.DAYS.between(before, now);
-				 System.out.println(nod);
    
 				 String roomtype = HotelRoom.getCurrentRoomList().get(Integer.parseInt(rumIDfld.getText())-1).getRoomType();
-				 System.out.println(roomtype);
-//            	 Customer.delCUS(custIDfld.getText());
-//            	 HotelRoom.openRum(rumIDfld.getText());
 				 String emaddy = Customer.findEmail(custIDfld.getText());
 				 Integer noddy = (int) (long) nod;
 				 int tot;

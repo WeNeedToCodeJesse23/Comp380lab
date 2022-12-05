@@ -147,10 +147,7 @@ public class makeReservation /*extends JFrame*/ {
               
                 reserveWindow.dispose();
                 
-               
-              //  HotelRoom.clearRoomList();
-              //  Customer.clearCustomerList();
-                  SearchWindow searchWin = new SearchWindow(); 
+                 SearchWindow searchWin = new SearchWindow(); 
              }
              else if(event.getSource() == reserve)
              {
@@ -165,32 +162,15 @@ public class makeReservation /*extends JFrame*/ {
                 	 }
              
                 Customer userInfo = new Customer(name, address, email, cardNumber);
-                System.out.println(userInfo.getCheckin());
 
                 userInfo.setRoomID(RoomSelected);
-               // System.out.println("this is Given ID " + userInfo.getRoomID());
-                //System.out.println("RoomSelected = " + RoomSelected);
+               
                 ReviewReservationWindow review = new ReviewReservationWindow(userInfo);
                 reserveWindow.setVisible(false);
                 reserveWindow.dispose();
-                //ConfirmationWindow confirm = new ConfirmationWindow(userInfo);
                 
-                //System.out.println(userInfo);
-                
-                //SearchWindow.loadData();
-            	 /*System.out.println("Reserved!\n"
-            	 		+ "Provided Info:\n"
-            	 		+ "Name: " + name + "\n"
-            	 		+ "Email: " + email + "\n"
-            	 		+ "Address: " + address + "\n");*/
              }
         }
     }
 
 }
-
-	//Button actions
- 
-
-
- 

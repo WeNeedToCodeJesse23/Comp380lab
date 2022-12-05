@@ -184,16 +184,9 @@ public class GUI extends JFrame  {
         main.add(Change);
         main.add(Generate);
 
-
-        main.setLayout(new FlowLayout());
-        hotelLogin.setLayout(null);
-        main.setVisible(true);
-        hotelLogin.setVisible(false);
-
-        /*
         // make image
         try {
-            BufferedImage makeJPG = ImageIO.read(new File("mqdefault.jpg"));
+            BufferedImage makeJPG = ImageIO.read(new File("Luxury-Hotels-in-Las-Vegas-1440-x-675-900x420.jpg"));
             JLabel picture = new JLabel(new ImageIcon(makeJPG));
             picture.setBounds(100,700,100,100);
             picture.setVisible(true);
@@ -202,8 +195,14 @@ public class GUI extends JFrame  {
         } catch (IOException e){
             System.out.println("no image :(");
         }
+        
+        main.setLayout(new FlowLayout());
+        hotelLogin.setLayout(null);
+        main.setVisible(true);
+        hotelLogin.setVisible(false);
 
-         */
+
+
 
         //button Action Listeners
         myActionListener e = new myActionListener();

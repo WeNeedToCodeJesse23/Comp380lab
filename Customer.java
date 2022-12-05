@@ -221,7 +221,7 @@ public class Customer {
           	checkin = customerInfoArray[6];
         	Customer customerInst = new Customer(name, address, email, cardNumber, custID, roomID, checkin);
         	customerList.add(customerInst);
-        	//System.out.println(customerList);
+    
         }
       //return roomList; 
     }
@@ -253,9 +253,7 @@ public class Customer {
             for(int counter = 0; counter < customerList.size(); counter++)
             {
                 customerData = customerList.get(counter).toString();
-            //    System.out.println(hotelData);
                 pw.write(customerData);
-            //  System.out.println("HotelData: " + hotelData);
             }
             pw.close();
         }
@@ -280,11 +278,9 @@ public class Customer {
 	   * @return void
 	   */
 	public static void delCUS(String id){
-		System.out.println(id);
 		int i;
 		for(i = 0 ; i<customerList.size();i++) {
 			if(String.valueOf(customerList.get(i).getCustID()).equals(id)) {
-				System.out.println(customerList.get(i).toString());
 				customerList.remove(i);
 				writeCustomerData();
 				
@@ -299,10 +295,7 @@ public class Customer {
 	   * @return void
 	   */
 	public static void ChangeRoom(int location, int newRoom){
-       // System.out.println("CHECK THIS RN: " + customerList.get(location).getRoomID() + " AND " + customerList.get(location).getName());
-       // System.out.println("New Room = " + newRoom);
         customerList.get(location).setRoomID(newRoom);
-       //System.out.println("CHECK THIS RN: " + customerList.get(location).getRoomID() + " AND " + customerList.get(location).getName());
 
        writeCustomerData();
     }
@@ -319,10 +312,6 @@ public class Customer {
 				return customerList.get(i).getCheckin();
 				
 			}
-			
-	      
-
-	       
 	    }
 		return "not found";
 	}
@@ -336,7 +325,6 @@ public class Customer {
 		for(i = 0 ; i<customerList.size();i++) {
 			if(String.valueOf(customerList.get(i).getCustID()).equals(id)) {
 				return customerList.get(i).getAddy();
-				
 			}
 	    }
 		return "no email found";

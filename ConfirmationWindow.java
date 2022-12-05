@@ -1,10 +1,12 @@
 import java.awt.event.ActionListener;
-import java.util.Locale;
-//import java.util.ArrayList;
+import java.io.File;
 import java.awt.event.ActionEvent;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.Font;
-import java.awt.GraphicsEnvironment;
 
 /**
  * @author Jaztin Tabunda
@@ -23,6 +25,15 @@ import java.awt.GraphicsEnvironment;
  */
 
 public class ConfirmationWindow {
+	
+	private static File music;
+	private static AudioInputStream musicStream;
+	private static Clip clip;
+	
+	final char LUXROOMSTART = 81;
+
+	ImageIcon makeJPG;
+	JLabel picture;
 	
 	private Font testFont = new Font("Harlow Solid Italic", Font.PLAIN, 20);
 	
@@ -59,6 +70,27 @@ public class ConfirmationWindow {
 	
 	public ConfirmationWindow(Customer userInfo)
 	{
+		if(userInfo.getRoomID() >= LUXROOMSTART)
+		{
+			ConfirmationWindow.musicPlayer();
+			try {
+	            makeJPG = new ImageIcon("luxMeme.gif"); //"Luxury-gif.gif"
+	            picture = new JLabel(makeJPG);
+	            
+	        } catch (Exception e){
+	            System.out.println("no image :(");
+	        }
+		}
+		else
+		{
+			try {
+				makeJPG = new ImageIcon("Reg-gif.gif");
+	            picture = new JLabel(makeJPG);
+	            
+	        } catch (Exception e){
+	            System.out.println("no image :(");
+	        }
+		}
 		conWindow = new JFrame();
 		panel = new JPanel();
 		home = new JButton("Home");
@@ -83,7 +115,7 @@ public class ConfirmationWindow {
         custIDLabel = new JLabel("Customer ID / Password: " + custID);
         roomIDLabel = new JLabel("Assigned Room: " + roomID);
 		
-		home.setBounds(500, 350, 150, 40);
+		home.setBounds(500, 400, 150, 40);
 		
 		windowTitle.setBounds(10, 25, 500, 25);
         nameLabel.setBounds(10, 75, 500, 25);
@@ -92,6 +124,7 @@ public class ConfirmationWindow {
         cardNumberLabel.setBounds(10, 225, 500, 25);
         custIDLabel.setBounds(10, 275, 500, 25);
         roomIDLabel.setBounds(10, 325, 500, 25);
+        picture.setBounds(250,25,350,350);
 		
 		panel.add(home);
 		panel.add(nameLabel);
@@ -101,7 +134,8 @@ public class ConfirmationWindow {
 		panel.add(custIDLabel);
 		panel.add(roomIDLabel);
 		panel.add(windowTitle);
-		
+        panel.add(picture);
+
 		conWindow.setVisible(true);
 		home.addActionListener(listener);
 		
@@ -115,8 +149,48 @@ public class ConfirmationWindow {
             	 conWindow.setVisible(false);
                  GUI gui = new GUI();
                  gui.createAndShowGUI();
+                 ConfirmationWindow.musicStopper();
                  conWindow.dispose();
              }
         }
     }
+    
+    /***
+     * This method will be used to play the music if the user selects a luxury room.
+     */
+    
+	private static void musicPlayer()
+	{
+		try
+		{
+			music = new File("Lux-Theme-wavFile.wav");
+			musicStream = AudioSystem.getAudioInputStream(music);
+			clip = AudioSystem.getClip();
+			clip.open(musicStream);
+			clip.start();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Missing audio file");
+		}
+	}
+	
+    /***
+     * This method will be used to stop the music if the user selects a luxury room.
+     */
+	
+	private static void musicStopper()
+	{
+		try
+		{
+			if(clip.isRunning() == true)
+			{
+				clip.close();
+			}
+		}
+		catch(Exception e)
+		{
+			//System.out.println("Missing audio file");
+		}
+	}
 }

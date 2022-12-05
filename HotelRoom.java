@@ -212,7 +212,6 @@ public class HotelRoom {
           	numberOfRooms = Integer.parseInt(roomArray[3]);
         	HotelRoom room = new HotelRoom(roomID, roomStatus, roomType, numberOfRooms);
         	roomList.add(room);
-        	//System.out.println(roomList);
         }
       //return roomList; 
     }
@@ -238,15 +237,12 @@ public class HotelRoom {
      */
 	
     public static void UpdateRoomStatus(int RoomID){
-        //  System.out.println("this is RoomID in WriteHotel " + RoomID);
-        // System.out.println(roomList.get(RoomID-1));
-       System.out.println(roomList.get(RoomID - 1) + " -----------before--------------- " + roomList.get(RoomID-1).getRoomStatus());
+        
         if(roomList.get(RoomID - 1).getRoomStatus() == false) {
             roomList.get(RoomID - 1).setReservedStatus(true);
         } else {
             roomList.get(RoomID - 1 ).setReservedStatus(false);
         }
-       System.out.println(roomList.get(RoomID-1) + " ------------after------------- " + roomList.get(RoomID-1).getRoomStatus());
         writeHotelData();
     }
 
@@ -265,9 +261,7 @@ public class HotelRoom {
             for(int counter = 0; counter < roomList.size(); counter++)
             {
                 hotelData = roomList.get(counter).toString();
-            //    System.out.println(hotelData);
                 pw.write(hotelData);
-            //  System.out.println("HotelData: " + hotelData);
             }
             pw.close();
         }
@@ -327,9 +321,7 @@ public class HotelRoom {
     public static void openRum(String id)
     {
     	int rumID = Integer.parseInt(id)-1;
-    	System.out.println(roomList.get(rumID).toString());
     	roomList.get(rumID).setReservedStatus(false);
-    	System.out.println(roomList.get(rumID).toString());
     	writeHotelData();
     }
 }

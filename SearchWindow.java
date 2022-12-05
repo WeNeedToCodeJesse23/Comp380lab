@@ -70,9 +70,6 @@ public class SearchWindow extends TableGUIWindow {
                 ThisWindow.dispose();
             } if(event.getSource() == MakeReservationButton){
                 if(!HotelRoom.ReturnCollection().get(RoomSelected).getRoomStatus()){
-                   // System.out.println("selected room: " + HotelRoom.ReturnCollection().get(RoomSelected));
-                    System.out.println(HotelRoom.numAvailLux());
-                    System.out.println(HotelRoom.numAvailReg());
                     ThisWindow.setVisible(false);
                     makeReservation reservationWindow = new makeReservation(RoomSelected); //add parameter for room Selected
                     ThisWindow.dispose();
